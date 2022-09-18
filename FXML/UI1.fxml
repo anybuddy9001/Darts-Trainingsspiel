@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <ImageView fitHeight="365.0" fitWidth="651.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Dartgroß.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="40.0" layoutY="39.0" mnemonicParsing="false" onAction="#keinTreffer" prefHeight="57.0" prefWidth="271.0" text="Kein Treffer" />
+      <Button layoutX="40.0" layoutY="115.0" mnemonicParsing="false" onAction="#nurEinDartImTriple" prefHeight="57.0" prefWidth="271.0" text="Nur ein Treffer im Triple" />
+      <Button layoutX="40.0" layoutY="197.0" mnemonicParsing="false" onAction="#zweiTreffer" prefHeight="57.0" prefWidth="271.0" text="Zwei Treffer" />
+      <Button layoutX="40.0" layoutY="273.0" mnemonicParsing="false" onAction="#dreiTreffer" prefHeight="57.0" prefWidth="271.0" text="Drei Treffer" />
+      <TextField fx:id="highscore" editable="false" layoutX="337.0" layoutY="39.0" prefHeight="57.0" prefWidth="241.0" text="Highscore: 0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="score" editable="false" layoutX="337.0" layoutY="103.0" prefHeight="57.0" prefWidth="241.0" text="Score: 0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="loose" editable="false" layoutX="337.0" layoutY="167.0" prefHeight="118.0" prefWidth="241.0">
+         <font>
+            <Font size="44.0" />
+         </font>
+      </TextField>
+      <Button layoutX="337.0" layoutY="291.0" mnemonicParsing="false" onAction="#newGame" prefHeight="38.0" prefWidth="241.0" text="Neues Spiel">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
