@@ -4,6 +4,8 @@ public class Trainingsspiel {
 
     private int Punktestand;
 
+    public int numCache;
+
     public Trainingsspiel() {
         Punktestand = 0;
         Highscore = 0;
@@ -34,7 +36,6 @@ public class Trainingsspiel {
     }
 
     public void ZweiTreffer(int Triple) {
-        //System.out.println(Triple);
         if (Punktestand < 0) {
             System.out.println("Du hast verloren! Highscore: " + Highscore);
         } else {
@@ -64,8 +65,8 @@ public class Trainingsspiel {
             switch (Triple) {
                 case 0 -> Punktestand += 2;
                 case 1 -> Punktestand += 2 + Triple * 2;
-                case 2 -> Punktestand = Punktestand + 1 + Triple * 2;
-                case 3 -> Punktestand = Punktestand + Triple * 2;
+                case 2 -> Punktestand += 1 + Triple * 2;
+                case 3 -> Punktestand += Triple * 2;
                 default -> {
                     System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
                     System.out.println("Punktestand:" + Punktestand);

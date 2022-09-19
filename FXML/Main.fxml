@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="365.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" prefHeight="365.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <ImageView fitHeight="365.0" fitWidth="651.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="365.0" fitWidth="673.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Dartgroß.png" />
+            <Image url="@../assets/Dartgroß.png" />
          </image>
       </ImageView>
       <Button layoutX="40.0" layoutY="39.0" mnemonicParsing="false" onAction="#keinTreffer" prefHeight="57.0" prefWidth="271.0" text="Kein Treffer" />

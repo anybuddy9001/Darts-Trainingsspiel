@@ -2,6 +2,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -22,7 +23,7 @@ public class Controller implements Initializable {
     @FXML
     private Button closeButton;
     @FXML
-    private TextField tripleTreffer;
+    private TextField numberPromptIn;
     @FXML
     private TextField error;
 
@@ -56,6 +57,7 @@ public class Controller implements Initializable {
         scoreS = score;
         highscoreS = highscore;
         looseS = loose;
+        spiel.numCache = 2;
         numberPrompt.open(2);
     }
 
@@ -64,21 +66,26 @@ public class Controller implements Initializable {
         scoreS = score;
         highscoreS = highscore;
         looseS = loose;
+        spiel.numCache = 3;
         numberPrompt.open(3);
     }
 
     @FXML
-    private void closeNumberPrompt() {
+    public void closeNumberPrompt() {
+        int numCache = spiel.numCache;
         int triples;
         // get a handle to the stage
         Stage stage = (Stage) closeButton.getScene().getWindow();
         // do what you have to do
         try {
-            triples = Integer.parseInt(tripleTreffer.getText());
-            // System.out.println(triples);
-            if (triples <= 2 && triples >= 0) {
-                spiel.ZweiTreffer(triples);
+            triples = Integer.parseInt(numberPromptIn.getText());
+            if (triples <= numCache && triples >= 0) {
+                switch (numCache) {
+                    case 2 -> spiel.ZweiTreffer(triples);
+                    case 3 -> spiel.DreiTreffer(triples);
+                }
                 stage.close();
+                spiel.numCache = -1;
             } else {
                 error.setText("Anzahl an Triple-Treffern überprüfen!");
             }
@@ -88,6 +95,7 @@ public class Controller implements Initializable {
         setScore();
     }
 
+    @FXML
     public void newGame() {
         spiel = new Trainingsspiel();
         score.setText("Score: 0");
@@ -102,5 +110,20 @@ public class Controller implements Initializable {
             looseS.setText("Verloren!");
         }
         highscoreS.setText("Highscore: " + spiel.getHighscore());
+    }
+
+    public void keyPressed(KeyEvent keyEvent) {
+        switch (keyEvent.getCode()) {
+            case DIGIT0, NUMPAD0 -> keinTreffer();
+            case DIGIT1, NUMPAD1 -> nurEinDartImTriple();
+            case DIGIT2, NUMPAD2 -> zweiTreffer();
+            case DIGIT3, NUMPAD3 -> dreiTreffer();
+            case R -> newGame();
+            case Q -> {
+                System.out.println("Exiting!");
+                System.exit(0);
+            }
+            default -> System.out.println("Key not known!");
+        }
     }
 }
