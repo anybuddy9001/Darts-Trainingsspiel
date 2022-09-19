@@ -17,13 +17,13 @@ public class NumberPrompt {
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
-        } catch (IllegalStateException | IOException e) {
-            System.out.println("`NumberPrompt` couldn't be initialized: \n" + e);
+        } catch (IOException e) {
+            System.out.println("E: NumberPrompt couldn't be initialized: \n" + e);
         }
         try {
             stage.show();
         } catch (IllegalStateException e) {
-            System.out.println("`NumberPrompt` couldn't be opened: \n" + e);
+            System.out.println("E: NumberPrompt couldn't be opened: \n" + e);
         }
     }
 }

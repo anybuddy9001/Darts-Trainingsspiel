@@ -1,91 +1,66 @@
+import lombok.Getter;
+import lombok.Setter;
+
 public class Trainingsspiel {
-    protected int Highscore;
-    protected String HighscoreUebertrag;
-
-    private int Punktestand;
-
-    public int numCache;
-
-    public Trainingsspiel() {
-        Punktestand = 0;
-        Highscore = 0;
-        HighscoreUebertrag = Integer.toString(Highscore);
-    }
+    @Setter @Getter
+    private int Highscore = 0;
+    @Setter @Getter
+    private int Score = 0;
+    @Setter @Getter
+    private int numCache;
 
     public void keinTreffer() {
-        Punktestand--;
-        if (Punktestand < 0) {
+        Score--;
+        if (Score < 0) {
             System.out.println("Du hast verloren! Highscore: " + Highscore);
         } else {
-            System.out.println("Punktestand: " + Punktestand);
-            System.out.println("Highscore: " + Highscore);
+            System.out.println("Punktestand: " + Score);
         }
     }
 
     public void NurEinTrefferImTriple() {
-        if (Punktestand < 0) {
+        if (Score < 0) {
             System.out.println("Du hast verloren! Highscore: " + Highscore);
         } else {
-            Punktestand++;
-            if (Highscore < Punktestand) {
-                Highscore = Punktestand;
-            }
-            System.out.println("Punktestand: " + Punktestand);
-            System.out.println("Highscore: " + Highscore);
+            Score++;
+            checkHighscore();
         }
     }
 
     public void ZweiTreffer(int Triple) {
-        if (Punktestand < 0) {
+        if (Score < 0) {
             System.out.println("Du hast verloren! Highscore: " + Highscore);
         } else {
             switch (Triple) {
-                case 0 -> Punktestand++;
-                case 1 -> Punktestand += 1 + Triple * 2;
-                case 2 -> Punktestand += Triple * 2;
-                default -> {
-                    System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
-                    System.out.println("Punktestand:" + Punktestand);
-                    System.out.println("Highscore:" + Highscore);
-                }
+                case 0 -> Score++;
+                case 1 -> Score += 1 + Triple * 2;
+                case 2 -> Score += Triple * 2;
+                default -> System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
             }
-            if (Highscore < Punktestand) {
-                Highscore = Punktestand;
-
-                System.out.println("Punktestand:" + Punktestand);
-                System.out.println("Highscore:" + Highscore);
-            }
+            checkHighscore();
         }
     }
 
     public void DreiTreffer(int Triple) {
-        if (Punktestand < 0) {
+        if (Score < 0) {
             System.out.println("Du hast verloren! Highscore:" + Highscore);
         } else {
             switch (Triple) {
-                case 0 -> Punktestand += 2;
-                case 1 -> Punktestand += 2 + Triple * 2;
-                case 2 -> Punktestand += 1 + Triple * 2;
-                case 3 -> Punktestand += Triple * 2;
-                default -> {
-                    System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
-                    System.out.println("Punktestand:" + Punktestand);
-                    System.out.println("Highscore:" + Highscore);
-                }
+                case 0 -> Score += 2;
+                case 1 -> Score += 2 + Triple * 2;
+                case 2 -> Score += 1 + Triple * 2;
+                case 3 -> Score += Triple * 2;
+                default -> System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
             }
-            if (Highscore < Punktestand) {
-                Highscore = Punktestand;
-            }
-            System.out.println("Punktestand:" + Punktestand);
-            System.out.println("Highscore:" + Highscore);
+            checkHighscore();
         }
     }
 
-    public int getScore() {
-        return Punktestand;
-    }
-
-    public int getHighscore() {
-        return Highscore;
+    private void checkHighscore() {
+        if (Highscore < Score) {
+            Highscore = Score;
+            System.out.println("Highscore: " + Highscore);
+        }
+        System.out.println("Punktestand: " + Score);
     }
 }

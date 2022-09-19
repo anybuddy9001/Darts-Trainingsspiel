@@ -9,10 +9,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    private static TextField scoreS;
-    private static TextField highscoreS;
-    private static TextField looseS;
     private static Trainingsspiel spiel = new Trainingsspiel();
+    private static NumberPrompt numberPrompt;
+
+    private static TextField scoreTMP;
+    private static TextField highscoreTMP;
+    private static TextField looseTMP;
 
     @FXML
     private TextField score;
@@ -23,11 +25,9 @@ public class Controller implements Initializable {
     @FXML
     private Button closeButton;
     @FXML
-    private TextField numberPromptIn;
-    @FXML
     private TextField error;
-
-    private NumberPrompt numberPrompt;
+    @FXML
+    private TextField numberPromptIn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -37,42 +37,42 @@ public class Controller implements Initializable {
     @FXML
     public void keinTreffer() {
         spiel.keinTreffer();
-        scoreS = score;
-        highscoreS = highscore;
-        looseS = loose;
+        scoreTMP = score;
+        highscoreTMP = highscore;
+        looseTMP = loose;
         setScore();
     }
 
     @FXML
     public void nurEinDartImTriple() {
         spiel.NurEinTrefferImTriple();
-        scoreS = score;
-        highscoreS = highscore;
-        looseS = loose;
+        scoreTMP = score;
+        highscoreTMP = highscore;
+        looseTMP = loose;
         setScore();
     }
 
     @FXML
     public void zweiTreffer() {
-        scoreS = score;
-        highscoreS = highscore;
-        looseS = loose;
-        spiel.numCache = 2;
+        scoreTMP = score;
+        highscoreTMP = highscore;
+        looseTMP = loose;
+        spiel.setNumCache(2);
         numberPrompt.open(2);
     }
 
     @FXML
     public void dreiTreffer() {
-        scoreS = score;
-        highscoreS = highscore;
-        looseS = loose;
-        spiel.numCache = 3;
+        scoreTMP = score;
+        highscoreTMP = highscore;
+        looseTMP = loose;
+        spiel.setNumCache(3);
         numberPrompt.open(3);
     }
 
     @FXML
     public void closeNumberPrompt() {
-        int numCache = spiel.numCache;
+        int numCache = spiel.getNumCache();
         int triples;
         // get a handle to the stage
         Stage stage = (Stage) closeButton.getScene().getWindow();
@@ -85,31 +85,32 @@ public class Controller implements Initializable {
                     case 3 -> spiel.DreiTreffer(triples);
                 }
                 stage.close();
-                spiel.numCache = -1;
+                spiel.setNumCache(-1);
             } else {
-                error.setText("Anzahl an Triple-Treffern überprüfen!");
+                error.setText("E: Anzahl an Triple-Treffern überprüfen!");
             }
         } catch (NumberFormatException e) {
-            error.setText("Anzahl an Triple-Treffern überprüfen!");
+            error.setText("E: cleAnzahl an Triple-Treffern überprüfen!");
         }
         setScore();
     }
 
     @FXML
     public void newGame() {
+        System.out.println("I: Resetting Game!");
         spiel = new Trainingsspiel();
         score.setText("Score: 0");
-        highscore.setText("Highscore:" + spiel.getHighscore());
+        highscore.setText("Highscore: 0");
         loose.setText("");
     }
 
     public void setScore() {
         if (spiel.getScore() >= 0) {
-            scoreS.setText("Score: " + spiel.getScore());
+            scoreTMP.setText("Score: " + spiel.getScore());
         } else {
-            looseS.setText("Verloren!");
+            looseTMP.setText("Verloren!");
         }
-        highscoreS.setText("Highscore: " + spiel.getHighscore());
+        highscoreTMP.setText("Highscore: " + spiel.getHighscore());
     }
 
     public void keyPressed(KeyEvent keyEvent) {
@@ -120,10 +121,12 @@ public class Controller implements Initializable {
             case DIGIT3, NUMPAD3 -> dreiTreffer();
             case R -> newGame();
             case Q -> {
-                System.out.println("Exiting!");
+                System.out.println("I: Exiting!");
                 System.exit(0);
             }
-            default -> System.out.println("Key not known!");
+            default -> {
+                //System.out.println("E: Key not known!");
+            }
         }
     }
 }
