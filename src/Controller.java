@@ -26,13 +26,11 @@ public class Controller implements Initializable {
     @FXML
     private TextField error;
 
-    private UI ui2;
-    private UI ui3;
+    private NumberPrompt numberPrompt;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ui2 = new UI(2);
-        ui3 = new UI(3);
+        numberPrompt = new NumberPrompt();
     }
 
     @FXML
@@ -58,24 +56,19 @@ public class Controller implements Initializable {
         scoreS = score;
         highscoreS = highscore;
         looseS = loose;
-        ui2.open();
+        numberPrompt.open(2);
     }
-
-    // ToDo Get rid of UI2 and UI3. Instead use a parameter to determine which multiplication should be applied
-    // ToDo Remove redundant UI3.fxml
-    // ToDo Renaming of files
-    // ToDo Reading and Commenting code
 
     @FXML
     public void dreiTreffer() {
         scoreS = score;
         highscoreS = highscore;
         looseS = loose;
-        ui3.open();
+        numberPrompt.open(3);
     }
 
     @FXML
-    private void closeUI2() {
+    private void closeNumberPrompt() {
         int triples;
         // get a handle to the stage
         Stage stage = (Stage) closeButton.getScene().getWindow();
@@ -85,27 +78,6 @@ public class Controller implements Initializable {
             // System.out.println(triples);
             if (triples <= 2 && triples >= 0) {
                 spiel.ZweiTreffer(triples);
-                stage.close();
-            } else {
-                error.setText("Anzahl an Triple-Treffern überprüfen!");
-            }
-        } catch (NumberFormatException e) {
-            error.setText("Anzahl an Triple-Treffern überprüfen!");
-        }
-        setScore();
-    }
-
-    @FXML
-    private void closeUI3() {
-        int triples;
-        // get a handle to the stage
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        // do what you have to do
-        try {
-            triples = Integer.parseInt(tripleTreffer.getText());
-            //System.out.println(triples);
-            if (triples <= 3 && triples >= 0) {
-                spiel.DreiTreffer(triples);
                 stage.close();
             } else {
                 error.setText("Anzahl an Triple-Treffern überprüfen!");
