@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * @author Specktulatius
  * @author anybuddy
+ * @author Specktulatius
  * @version 1.3
  */
 public class NumberPrompt {

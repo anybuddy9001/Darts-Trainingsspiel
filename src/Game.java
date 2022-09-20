@@ -2,9 +2,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author Specktulatius
  * @author anybuddy
- * @version 1.3
+ * @author Specktulatius
+ * @version 2.0
  */
 public class Game {
     private final Controller mainController;
@@ -24,10 +24,20 @@ public class Game {
 
     public void keinTreffer() {
         Score--;
-        if (Score < 0) {
-            System.out.println("Du hast verloren! Highscore: " + Highscore);
+        checkScore();
+    }
+
+    public boolean handleNumberPromptOutput(int triples) {
+        if (triples <= numCache && triples >= 0) {
+            switch (numCache) {
+                case 1 -> this.einTreffer(triples);
+                case 2 -> this.ZweiTreffer(triples);
+                case 3 -> this.DreiTreffer(triples);
+            }
+            this.setNumCache(-1);
+            return true;
         } else {
-            checkScore();
+            return false;
         }
     }
 
@@ -68,6 +78,6 @@ public class Game {
             // System.out.println("Highscore: " + Highscore);
         }
         System.out.println("Punktestand: " + Score);
+        mainController.setScore();
     }
-
 }
