@@ -8,6 +8,11 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * @author Specktulatius
+ * @author anybuddy
+ * @version 1.3
+ */
 public class Controller implements Initializable {
     private static Game game;
     private static NumberPrompt numberPrompt;
@@ -115,6 +120,11 @@ public class Controller implements Initializable {
         highscoreTMP.setText("Highscore: " + game.getHighscore());
     }
 
+    /**
+     * Handler for key-presses on the main window
+     *
+     * @param keyEvent of the key that was pressed
+     */
     public void keyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case DIGIT0, NUMPAD0 -> keinTreffer();

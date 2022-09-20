@@ -8,6 +8,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * @author Specktulatius
+ * @author anybuddy
+ * @version 1.3
+ */
 public class NumberPrompt {
     public void open(int number) {
         Stage stage = new Stage();

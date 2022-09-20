@@ -7,6 +7,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * @author Specktulatius
+ * @author anybuddy
+ * @version 1.3.1
+ */
 public class Main extends Application {
 
     public static void main(String[] args) {
@@ -19,7 +24,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Main.fxml")));
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Trainingsspiel");
+        primaryStage.setTitle("Trainingsspiel - Main");
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setResizable(false);

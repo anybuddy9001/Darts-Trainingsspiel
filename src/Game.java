@@ -1,6 +1,11 @@
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * @author Specktulatius
+ * @author anybuddy
+ * @version 1.3
+ */
 public class Game {
     private final Controller mainController;
     @Setter
