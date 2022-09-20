@@ -9,7 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    private static Trainingsspiel spiel = new Trainingsspiel();
+    private static Game game;
     private static NumberPrompt numberPrompt;
 
     private static TextField scoreTMP;
@@ -31,12 +31,15 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (game == null) {
+            game = new Game(this);
+        }
         numberPrompt = new NumberPrompt();
     }
 
     @FXML
     public void keinTreffer() {
-        spiel.keinTreffer();
+        game.keinTreffer();
         scoreTMP = score;
         highscoreTMP = highscore;
         looseTMP = loose;
@@ -48,7 +51,7 @@ public class Controller implements Initializable {
         scoreTMP = score;
         highscoreTMP = highscore;
         looseTMP = loose;
-        spiel.setNumCache(1);
+        game.setNumCache(1);
         numberPrompt.open(1);
     }
 
@@ -57,7 +60,7 @@ public class Controller implements Initializable {
         scoreTMP = score;
         highscoreTMP = highscore;
         looseTMP = loose;
-        spiel.setNumCache(2);
+        game.setNumCache(2);
         numberPrompt.open(2);
     }
 
@@ -66,25 +69,25 @@ public class Controller implements Initializable {
         scoreTMP = score;
         highscoreTMP = highscore;
         looseTMP = loose;
-        spiel.setNumCache(3);
+        game.setNumCache(3);
         numberPrompt.open(3);
     }
 
     @FXML
     public void closeNumberPrompt() {
-        int numCache = spiel.getNumCache();
+        int numCache = game.getNumCache();
         int triples;
         Stage stage = (Stage) closeButton.getScene().getWindow();
         try {
             triples = Integer.parseInt(numberPromptIn.getText());
             if (triples <= numCache && triples >= 0) {
                 switch (numCache) {
-                    case 1 -> spiel.einTreffer(triples);
-                    case 2 -> spiel.ZweiTreffer(triples);
-                    case 3 -> spiel.DreiTreffer(triples);
+                    case 1 -> game.einTreffer(triples);
+                    case 2 -> game.ZweiTreffer(triples);
+                    case 3 -> game.DreiTreffer(triples);
                 }
                 stage.close();
-                spiel.setNumCache(-1);
+                game.setNumCache(-1);
                 setScore();
             } else {
                 error.setText("Anzahl an Triple-Treffern überprüfen!");
@@ -97,19 +100,19 @@ public class Controller implements Initializable {
     @FXML
     public void newGame() {
         System.out.println("I: Resetting Game!");
-        spiel = new Trainingsspiel();
+        game = new Game(this);
         score.setText("Score: 0");
         highscore.setText("Highscore: 0");
         loose.setText("");
     }
 
     public void setScore() {
-        if (spiel.getScore() >= 0) {
-            scoreTMP.setText("Score: " + spiel.getScore());
+        if (game.getScore() >= 0) {
+            scoreTMP.setText("Score: " + game.getScore());
         } else {
             looseTMP.setText("Verloren!");
         }
-        highscoreTMP.setText("Highscore: " + spiel.getHighscore());
+        highscoreTMP.setText("Highscore: " + game.getHighscore());
     }
 
     public void keyPressed(KeyEvent keyEvent) {

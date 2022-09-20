@@ -1,13 +1,21 @@
 import lombok.Getter;
 import lombok.Setter;
 
-public class Trainingsspiel {
-    @Setter @Getter
+public class Game {
+    private final Controller mainController;
+    @Setter
+    @Getter
     private int Highscore = 0;
-    @Setter @Getter
+    @Setter
+    @Getter
     private int Score = 0;
-    @Setter @Getter
+    @Setter
+    @Getter
     private int numCache;
+
+    public Game(Controller mainController) {
+        this.mainController = mainController;
+    }
 
     public void keinTreffer() {
         Score--;
