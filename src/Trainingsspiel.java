@@ -14,53 +14,47 @@ public class Trainingsspiel {
         if (Score < 0) {
             System.out.println("Du hast verloren! Highscore: " + Highscore);
         } else {
-            System.out.println("Punktestand: " + Score);
+            checkScore();
         }
     }
 
-    public void NurEinTrefferImTriple() {
-        if (Score < 0) {
-            System.out.println("Du hast verloren! Highscore: " + Highscore);
-        } else {
-            Score++;
-            checkHighscore();
+    public void einTreffer(int Triple) {
+        switch (Triple) {
+            case 0 -> {
+            }
+            case 1 -> Score += 1;
+            default -> System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
         }
+        checkScore();
     }
 
     public void ZweiTreffer(int Triple) {
-        if (Score < 0) {
-            System.out.println("Du hast verloren! Highscore: " + Highscore);
-        } else {
-            switch (Triple) {
-                case 0 -> Score++;
-                case 1 -> Score += 1 + Triple * 2;
-                case 2 -> Score += Triple * 2;
-                default -> System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
-            }
-            checkHighscore();
+        switch (Triple) {
+            case 0 -> Score++;
+            case 1 -> Score += 2;
+            case 2 -> Score += 3;
+            default -> System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
         }
+        checkScore();
     }
 
     public void DreiTreffer(int Triple) {
-        if (Score < 0) {
-            System.out.println("Du hast verloren! Highscore:" + Highscore);
-        } else {
-            switch (Triple) {
-                case 0 -> Score += 2;
-                case 1 -> Score += 2 + Triple * 2;
-                case 2 -> Score += 1 + Triple * 2;
-                case 3 -> Score += Triple * 2;
-                default -> System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
-            }
-            checkHighscore();
+        switch (Triple) {
+            case 0 -> Score += 2;
+            case 1 -> Score += 3;
+            case 2 -> Score += 4;
+            case 3 -> Score += 5;
+            default -> System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
         }
+        checkScore();
     }
 
-    private void checkHighscore() {
+    private void checkScore() {
         if (Highscore < Score) {
             Highscore = Score;
-            System.out.println("Highscore: " + Highscore);
+            // System.out.println("Highscore: " + Highscore);
         }
         System.out.println("Punktestand: " + Score);
     }
+
 }

@@ -10,12 +10,12 @@
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" prefHeight="365.0" prefWidth="619.0"
             xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <ImageView fitHeight="365.0" fitWidth="673.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../assets/Dartgroß.png"/>
+      <Image url="@Dartgroß.png"/>
    </ImageView>
    <Button layoutX="40.0" layoutY="39.0" mnemonicParsing="false" onAction="#keinTreffer" prefHeight="57.0"
            prefWidth="271.0" text="Kein Treffer"/>
-   <Button layoutX="40.0" layoutY="115.0" mnemonicParsing="false" onAction="#nurEinDartImTriple" prefHeight="57.0"
-           prefWidth="271.0" text="Nur ein Treffer im Triple"/>
+   <Button layoutX="40.0" layoutY="115.0" mnemonicParsing="false" onAction="#einTreffer" prefHeight="57.0"
+           prefWidth="271.0" text="Ein Treffer"/>
    <Button layoutX="40.0" layoutY="197.0" mnemonicParsing="false" onAction="#zweiTreffer" prefHeight="57.0"
            prefWidth="271.0" text="Zwei Treffer"/>
    <Button layoutX="40.0" layoutY="273.0" mnemonicParsing="false" onAction="#dreiTreffer" prefHeight="57.0"

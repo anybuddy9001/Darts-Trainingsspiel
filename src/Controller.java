@@ -44,12 +44,12 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    public void nurEinDartImTriple() {
-        spiel.NurEinTrefferImTriple();
+    public void einTreffer() {
         scoreTMP = score;
         highscoreTMP = highscore;
         looseTMP = loose;
-        setScore();
+        spiel.setNumCache(1);
+        numberPrompt.open(1);
     }
 
     @FXML
@@ -74,25 +74,24 @@ public class Controller implements Initializable {
     public void closeNumberPrompt() {
         int numCache = spiel.getNumCache();
         int triples;
-        // get a handle to the stage
         Stage stage = (Stage) closeButton.getScene().getWindow();
-        // do what you have to do
         try {
             triples = Integer.parseInt(numberPromptIn.getText());
             if (triples <= numCache && triples >= 0) {
                 switch (numCache) {
+                    case 1 -> spiel.einTreffer(triples);
                     case 2 -> spiel.ZweiTreffer(triples);
                     case 3 -> spiel.DreiTreffer(triples);
                 }
                 stage.close();
                 spiel.setNumCache(-1);
+                setScore();
             } else {
-                error.setText("E: Anzahl an Triple-Treffern überprüfen!");
+                error.setText("Anzahl an Triple-Treffern überprüfen!");
             }
         } catch (NumberFormatException e) {
-            error.setText("E: cleAnzahl an Triple-Treffern überprüfen!");
+            error.setText("Anzahl an Triple-Treffern überprüfen!");
         }
-        setScore();
     }
 
     @FXML
@@ -116,7 +115,7 @@ public class Controller implements Initializable {
     public void keyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case DIGIT0, NUMPAD0 -> keinTreffer();
-            case DIGIT1, NUMPAD1 -> nurEinDartImTriple();
+            case DIGIT1, NUMPAD1 -> einTreffer();
             case DIGIT2, NUMPAD2 -> zweiTreffer();
             case DIGIT3, NUMPAD3 -> dreiTreffer();
             case R -> newGame();

@@ -7,9 +7,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="272.0"
-            prefWidth="372.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="Controller">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="272.0"
+            prefWidth="372.0" xmlns="http://javafx.com/javafx/18" fx:controller="Controller">
     <ImageView fitHeight="308.0" fitWidth="372.0" layoutY="-33.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@Dartklein.png"/>
     </ImageView>
@@ -28,5 +27,9 @@
         </font>
     </TextField>
     <TextField fx:id="error" editable="false" focusTraversable="false" layoutX="79.0" layoutY="14.0" prefHeight="25.0"
-               prefWidth="214.0"/>
+               prefWidth="214.0">
+        <font>
+            <Font size="11.0"/>
+        </font>
+    </TextField>
 </AnchorPane>
