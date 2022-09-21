@@ -2,8 +2,6 @@
 
 # **Darts Trainingsspiel**
 
-Idee von Michael S.
-
 Dies ist ein kleines Java -Projekt mit OpenJFX (Javafx),
 mit dem Sie Ihre Darts-Fähigkeiten mithilfe eines Punktesystems trainieren können.
 
@@ -79,8 +77,6 @@ Ich benutze Intellij-Community von Netbeans mit dem Azul-Zulu JDK (18.0.2).
 # English Version
 
 ## **Darts Training Game**
-
-Idea and requested by Michael S.
 
 This is a small Java project with openJFX (JavaFX) to help you train your Darts skills with a point reward system.
 
