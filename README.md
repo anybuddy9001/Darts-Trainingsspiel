@@ -146,5 +146,5 @@ I use IntelliJ-Community by NetBeans with the Azul-Zulu JDK (18.0.2).
 
 ## Contributors
 
-* Michael S. - Idea, Councel, Darts specifics
+* Michael S. - Idea, Counseling, Darts specifics
 * Specktulatius - Base project
