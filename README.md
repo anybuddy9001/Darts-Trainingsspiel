@@ -1,13 +1,11 @@
-# **Darts Trainingsspiel (Training Game)**
+# **Darts Trainingsspiel (Darts Training Game)**
 
 Idea and requested by Michael S.
 
 This is a small Java project with openJFX (JavaFX) to help you train your Darts skills with a point reward system.
 
-Specktulatius made this for Michael some time ago.
+Specktulatius made this for Michael some time ago. <br>
 I almost reworked everything, but he still remains an author. :)
-
-Highscore: Michael S. 12 Punkte (09.04.2021) (mit Ring)
 
 ## Point System
 
