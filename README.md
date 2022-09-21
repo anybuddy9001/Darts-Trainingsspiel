@@ -1,4 +1,4 @@
-<sup>[Click here for the english version](#EnglishVersion) </sup>
+<sup>[Click here for the english version](#english-version) </sup>
 
 # **Darts Trainingsspiel**
 
