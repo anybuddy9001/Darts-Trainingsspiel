@@ -1,6 +1,8 @@
 # **Darts Trainingsspiel (Training Game)**
 
-This is a small Java project with openJFX (JavaFX) to help you train your Darts skills.
+Idea and requested by Michael S.
+
+This is a small Java project with openJFX (JavaFX) to help you train your Darts skills with a point reward system.
 
 Specktulatius made this for Michael some time ago.
 I almost reworked everything, but he still remains an author. :)
@@ -51,3 +53,7 @@ You can then just start is as you would any jar-file.
 Your java installation does not have openJFX (JavaFX) included. <br>
 Install and use one that does (e.g. Azul-Zulu) and try again. <br>
 (If your on Windows you can also try using the openJFX runtime.)
+
+## Development
+
+I use IntelliJ-Community by NetBeans with the Azul-Zulu JDK (18.0.2).
