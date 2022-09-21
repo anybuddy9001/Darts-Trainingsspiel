@@ -11,14 +11,22 @@ Specktulatius hat das Spiel vor einiger Zeit für Michael gemacht. <br>
 Allerdings habe ich inzwischen fast alles überarbeitet,
 aber er verbleibt dennoch als Autor in den Docs. :)
 
-## Punkte System
+## Anleitung zum Spiel:
 
-| Triple Treffer -><br>Darts im Board  	| 0  	| 1 	| 2 	| 3 	|
-|--------------------------------------	|----	|---	|---	|---	|
-| 0                                      	| -1 	| - 	| - 	| - 	|
-| 1                                      	| 0  	| 1 	| - 	| - 	|
-| 2                                      	| 1  	| 2 	| 3 	| - 	|
-| 3                                      	| 2  	| 3 	| 4 	| 5 	|
+Hänge einen beliebigen Practice Ring bei dem T20er Segment auf und versuche,
+innerhalb vom Ring zu treffen. Unten siehst du das Punkte-System aufgeführt.
+Als Triple Treffer werden auch Treffer in der T1 und T5 gezählt.
+Versuche, möglichst viele Punkte zu erreichen. Das Spiel ist verloren,
+sobald du bei 0 Punkten bist und keinen Treffer hast.
+
+## Punkte-System
+
+| Triple Treffer -> <br> Darts im Practice Ring  	 | 0  	 | 1 	 | 2 	 | 3 	 |
+|--------------------------------------------------|------|-----|-----|-----|
+| 0                                      	         | -1 	 | - 	 | - 	 | - 	 |
+| 1                                      	         | 0  	 | 1 	 | - 	 | - 	 |
+| 2                                      	         | 1  	 | 2 	 | 3 	 | - 	 |
+| 3                                      	         | 2  	 | 3 	 | 4 	 | 5 	 |
 
 ## Wie starte ich das Programm?
 
@@ -61,6 +69,11 @@ Installieren Sie ein JDK, das diese enthält (z.B. Azul-Zulu) und versuchen es e
 
 Ich benutze Intellij-Community von Netbeans mit dem Azul-Zulu JDK (18.0.2).
 
+## Mitwirkende
+
+* Michael S. - Idee, Beratung, Darts-Spezifisches
+* Specktulatius - Grundlage des Projekts
+
 <br>
 
 # English Version
@@ -74,14 +87,22 @@ This is a small Java project with openJFX (JavaFX) to help you train your Darts 
 Specktulatius made this for Michael some time ago. <br>
 I almost reworked everything, but he still remains an author in the Docs. :)
 
+## Instructions for the game:
+
+Hang up any practice ring at the T20 segment and attempt to hit within the ring.
+You will see the points system listed below.
+Hits in T1 and T5 are also counted as triple hits.
+Try to achieve as many points as possible.
+The game is lost when you are at 0 points and don't hit anything.
+
 ## Point System
 
-| Triple Treffer -><br>Darts im Board  	| 0  	| 1 	| 2 	| 3 	|
-|--------------------------------------	|----	|---	|---	|---	|
-| 0                                      	| -1 	| - 	| - 	| - 	|
-| 1                                      	| 0  	| 1 	| - 	| - 	|
-| 2                                      	| 1  	| 2 	| 3 	| - 	|
-| 3                                      	| 2  	| 3 	| 4 	| 5 	|
+| Triple Hits -> <br> Darts in Practice Ring  	 | 0  	 | 1 	 | 2 	 | 3 	 |
+|-----------------------------------------------|------|-----|-----|-----|
+| 0                                      	      | -1 	 | - 	 | - 	 | - 	 |
+| 1                                      	      | 0  	 | 1 	 | - 	 | - 	 |
+| 2                                      	      | 1  	 | 2 	 | 3 	 | - 	 |
+| 3                                      	      | 2  	 | 3 	 | 4 	 | 5 	 |
 
 ## How to run this Programm
 
@@ -94,7 +115,7 @@ You can then just start is as you would any jar-file.
 ###### Option 1
 
 1. Double-click on the downloaded jar-file in your file explorer (or right-click -> "Open")
-2. Done
+2. Enjoy
 
 ###### Option 2
 
@@ -122,3 +143,8 @@ Install and use one that does (e.g. Azul-Zulu) and try again. <br>
 ## Development
 
 I use IntelliJ-Community by NetBeans with the Azul-Zulu JDK (18.0.2).
+
+## Contributors
+
+* Michael S. - Idea, Councel, Darts specifics
+* Specktulatius - Base project
