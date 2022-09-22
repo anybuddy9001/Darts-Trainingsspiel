@@ -8,7 +8,8 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="272.0"
-            prefWidth="372.0" xmlns="http://javafx.com/javafx/18" fx:controller="Controller">
+            prefWidth="372.0" xmlns="http://javafx.com/javafx/18"
+            fx:controller="io.github.anybuddy9001.dartstrainingsspiel.Controller">
     <ImageView fitHeight="308.0" fitWidth="372.0" layoutY="-33.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../images/Dartklein.png"/>
     </ImageView>

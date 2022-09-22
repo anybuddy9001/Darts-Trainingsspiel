@@ -8,7 +8,8 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed"
-            prefHeight="365.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/18" fx:controller="Controller">
+            prefHeight="365.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/18"
+            fx:controller="io.github.anybuddy9001.dartstrainingsspiel.Controller">
    <ImageView fitHeight="365.0" fitWidth="673.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../images/Dartgroß.png"/>
    </ImageView>

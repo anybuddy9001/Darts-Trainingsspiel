@@ -1,3 +1,5 @@
+package io.github.anybuddy9001.dartstrainingsspiel;
+
 import lombok.Getter;
 import lombok.Setter;
 

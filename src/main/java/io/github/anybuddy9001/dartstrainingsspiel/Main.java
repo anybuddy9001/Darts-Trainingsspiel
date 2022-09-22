@@ -1,3 +1,5 @@
+package io.github.anybuddy9001.dartstrainingsspiel;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
