@@ -17,7 +17,7 @@ public class NumberPrompt {
     public void open(int number) {
         Stage stage = new Stage();
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("NumberPrompt.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/NumberPrompt.fxml")));
             Scene scene = new Scene(root);
             stage.setTitle("Trainingsspiel - Number Prompt (" + number + ")");
             stage.setScene(scene);
