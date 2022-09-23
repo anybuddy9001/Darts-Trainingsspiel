@@ -9,19 +9,22 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 /**
  * @author anybuddy
  * @author Specktulatius
- * @version 1.3
+ * @version 2.1
  */
 public class NumberPrompt {
+    private static final ResourceBundle resourceBundle = Main.getResourceBundle();  //NON-NLS;
+
     public void open(int number) {
         Stage stage = new Stage();
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/NumberPrompt.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/NumberPrompt.fxml")), resourceBundle);
             Scene scene = new Scene(root);
-            stage.setTitle("Trainingsspiel - Number Prompt (" + number + ")");
+            stage.setTitle(resourceBundle.getString("numberPromptWindow.Title") + " (" + number + ")");
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
@@ -31,12 +34,12 @@ public class NumberPrompt {
                 }
             });
         } catch (IOException e) {
-            System.out.println("E: NumberPrompt couldn't be initialized: \n" + e);
+            System.out.println(resourceBundle.getString("mError.numberPrompt.initialisation") + "\n" + e);
         }
         try {
             stage.show();
         } catch (IllegalStateException e) {
-            System.out.println("E: NumberPrompt couldn't be opened: \n" + e);
+            System.out.println(resourceBundle.getString("mError.numberPrompt.open") + "\n" + e);
         }
     }
 }

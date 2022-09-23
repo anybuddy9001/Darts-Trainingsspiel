@@ -3,19 +3,23 @@ package io.github.anybuddy9001.dartstrainingsspiel;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ResourceBundle;
+
 /**
  * @author anybuddy
  * @author Specktulatius
- * @version 2.0
+ * @version 2.1
  */
 public class Game {
+    private static final ResourceBundle resourceBundle = Main.getResourceBundle();  //NON-NLS;
+
     private final Controller mainController;
     @Setter
     @Getter
-    private int Highscore = 0;
+    private int highscore = 0;
     @Setter
     @Getter
-    private int Score = 0;
+    private int score = 0;
     @Setter
     @Getter
     private int numCache;
@@ -25,8 +29,8 @@ public class Game {
     }
 
     public void keinTreffer() {
-        Score--;
-        checkScore();
+        score--;
+        this.checkScore();
     }
 
     public boolean handleNumberPromptOutput(int triples) {
@@ -47,39 +51,36 @@ public class Game {
         switch (Triple) {
             case 0 -> {
             }
-            case 1 -> Score += 1;
-            default -> System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
+            case 1 -> score += 1;
         }
-        checkScore();
+        this.checkScore();
     }
 
     public void ZweiTreffer(int Triple) {
         switch (Triple) {
-            case 0 -> Score++;
-            case 1 -> Score += 2;
-            case 2 -> Score += 3;
-            default -> System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
+            case 0 -> score++;
+            case 1 -> score += 2;
+            case 2 -> score += 3;
         }
-        checkScore();
+        this.checkScore();
     }
 
     public void DreiTreffer(int Triple) {
         switch (Triple) {
-            case 0 -> Score += 2;
-            case 1 -> Score += 3;
-            case 2 -> Score += 4;
-            case 3 -> Score += 5;
-            default -> System.out.println("Diese Anzahl an Triple Treffern ist nicht möglich!");
+            case 0 -> score += 2;
+            case 1 -> score += 3;
+            case 2 -> score += 4;
+            case 3 -> score += 5;
         }
-        checkScore();
+        this.checkScore();
     }
 
     private void checkScore() {
-        if (Highscore < Score) {
-            Highscore = Score;
-            // System.out.println("Highscore: " + Highscore);
+        if (highscore < score) {
+            highscore = score;
+//             System.out.println(resourceBundle.getString("kw.highscore") + ": " + highscore);
         }
-        System.out.println("Punktestand: " + Score);
+        System.out.println(resourceBundle.getString("kw.score") + ": " + score);
         mainController.setScore();
     }
 }

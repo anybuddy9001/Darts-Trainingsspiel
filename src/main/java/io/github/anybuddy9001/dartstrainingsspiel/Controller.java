@@ -13,9 +13,11 @@ import java.util.ResourceBundle;
 /**
  * @author anybuddy
  * @author Specktulatius
- * @version 2.0
+ * @version 2.1
  */
 public class Controller implements Initializable {
+    private static final ResourceBundle resourceBundle = Main.getResourceBundle();  //NON-NLS;
+
     private static final NumberPrompt numberPrompt = new NumberPrompt();
     private static Game game;
     @FXML
@@ -36,6 +38,7 @@ public class Controller implements Initializable {
         if (game == null) {
             game = new Game(this);
         }
+        this.setScore();
     }
 
     @FXML
@@ -70,29 +73,27 @@ public class Controller implements Initializable {
                 window.close();
                 game.setNumCache(-1);
             } else {
-                error.setText("Anzahl an Triple-Treffern überprüfen!");
+                error.setText(resourceBundle.getString("sError.numberPrompt.amount"));
             }
         } catch (NumberFormatException e) {
-            error.setText("Anzahl an Triple-Treffern überprüfen!");
+            error.setText(resourceBundle.getString("sError.numberPrompt.amount"));
         }
     }
 
     @FXML
     public void newGame() {
-        System.out.println("I: Resetting Game!");
+        System.out.println(resourceBundle.getString("stdout.reset"));
         game = new Game(this);
-        score.setText("Score: 0");
-        highscore.setText("Highscore: 0");
         loose.setText("");
     }
 
     public void setScore() {
         if (game.getScore() >= 0) {
-            score.setText("Score: " + game.getScore());
+            score.setText(resourceBundle.getString("kw.score") + ": " + game.getScore());
         } else {
-            loose.setText("Verloren!");
+            loose.setText(resourceBundle.getString("mainWindow.textField.lost"));
         }
-        highscore.setText("Highscore: " + game.getHighscore());
+        highscore.setText(resourceBundle.getString("kw.highscore") + ": " + game.getHighscore());
     }
 
     /**
@@ -108,10 +109,10 @@ public class Controller implements Initializable {
             case DIGIT3, NUMPAD3 -> this.dreiTreffer();
             case R, DECIMAL -> this.newGame();
             case Q -> {
-                System.out.println("I: Exiting!");
+                System.out.println(resourceBundle.getString("stdout.exit"));
                 System.exit(0);
             }
-            default -> System.out.println("E: Key not known: " + keyEvent.getCode());
+//            default -> System.out.println("E: Key not known: " + keyEvent.getCode());
         }
     }
 }

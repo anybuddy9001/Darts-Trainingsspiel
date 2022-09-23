@@ -5,18 +5,26 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lombok.Getter;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 /**
- * @author Specktulatius
  * @author anybuddy
- * @version 1.3.1
+ * @author Specktulatius
+ * @version 2.1
  */
 public class Main extends Application {
+    //    private static Locale fallBackLocale = new Locale("de");
+    @Getter
+    private static ResourceBundle resourceBundle;
 
     public static void main(String[] args) {
+        Locale locale = new Locale("de");
+        resourceBundle = ResourceBundle.getBundle("lang", locale);  //NON-NLS
         launch(args);
     }
 
@@ -24,9 +32,9 @@ public class Main extends Application {
     }
 
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")), resourceBundle);
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Trainingsspiel - Main");
+        primaryStage.setTitle(resourceBundle.getString("mainWindow.Title"));
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setResizable(false);

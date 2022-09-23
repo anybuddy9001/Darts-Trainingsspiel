@@ -22,7 +22,7 @@
         </font>
     </TextField>
     <TextField alignment="CENTER" editable="false" focusTraversable="false" layoutX="6.0" layoutY="44.0"
-               prefHeight="63.0" prefWidth="360.0" text="Anzahl an Triple-Treffern:">
+               prefHeight="63.0" prefWidth="360.0" text="%numberPromptWindow.textField.amount">
         <font>
             <Font size="24.0"/>
         </font>
