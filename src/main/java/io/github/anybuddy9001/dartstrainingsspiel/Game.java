@@ -8,12 +8,12 @@ import java.util.ResourceBundle;
 /**
  * @author anybuddy
  * @author Specktulatius
- * @version 2.1
+ * @version 3.0pre1
  */
 public class Game {
-    private static final ResourceBundle resourceBundle = Main.getResourceBundle();  //NON-NLS;
+    private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
 
-    private final Controller mainController;
+    private final GameController mainController;
     @Setter
     @Getter
     private int highscore = 0;
@@ -24,7 +24,7 @@ public class Game {
     @Getter
     private int numCache;
 
-    public Game(Controller mainController) {
+    public Game(GameController mainController) {
         this.mainController = mainController;
     }
 

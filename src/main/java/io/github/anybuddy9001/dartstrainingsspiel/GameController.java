@@ -11,12 +11,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
+ * Controller for the game windows - Main and NumberPrompt
+ *
  * @author anybuddy
  * @author Specktulatius
- * @version 2.1
+ * @version 3.0pre1
  */
-public class Controller implements Initializable {
-    private static final ResourceBundle resourceBundle = Main.getResourceBundle();  //NON-NLS;
+public class GameController implements Initializable {
+    private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
 
     private static final NumberPrompt numberPrompt = new NumberPrompt();
     private static Game game;
@@ -37,8 +39,8 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         if (game == null) {
             game = new Game(this);
+            this.setScore();
         }
-        this.setScore();
     }
 
     @FXML

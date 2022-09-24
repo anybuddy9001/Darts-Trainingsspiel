@@ -14,10 +14,10 @@ import java.util.ResourceBundle;
 /**
  * @author anybuddy
  * @author Specktulatius
- * @version 2.1
+ * @version 3.0pre1
  */
 public class NumberPrompt {
-    private static final ResourceBundle resourceBundle = Main.getResourceBundle();  //NON-NLS;
+    private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
 
     public void open(int number) {
         Stage stage = new Stage();
