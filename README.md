@@ -65,7 +65,8 @@ Installieren Sie ein JDK, das diese enthält (z.B. Azul-Zulu) und versuchen es e
 
 ## Entwicklung
 
-Ich benutze Intellij-Community von JetBrains mit dem Azul-Zulu JDK (18.0.2).
+Ich benutze Intellij-Community von JetBrains mit dem Azul-Zulu JDK (18.0.2). <br>
+Zusätzlich verwende ich die `lombok`-Bibliothek.
 
 ## Mitwirkende
 
@@ -138,7 +139,8 @@ Install and use one that does (e.g. Azul-Zulu) and try again. <br>
 
 ## Development
 
-I use IntelliJ-Community by JetBrains with the Azul-Zulu JDK (18.0.2).
+I use IntelliJ-Community by JetBrains with the Azul-Zulu JDK (18.0.2). <br>
+Additionally I use the `lombok` library.
 
 ## Contributors
 
