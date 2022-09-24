@@ -84,7 +84,7 @@ public class GameController implements Initializable {
 
     @FXML
     public void newGame() {
-        System.out.println(resourceBundle.getString("stdout.reset"));
+        System.out.println(resourceBundle.getString("stdOut.reset"));
         game = new Game(this);
         loose.setText("");
     }
@@ -111,8 +111,9 @@ public class GameController implements Initializable {
             case DIGIT3, NUMPAD3 -> this.dreiTreffer();
             case R, DECIMAL -> this.newGame();
             case Q -> {
-                System.out.println(resourceBundle.getString("stdout.exit"));
-                System.exit(0);
+                Stage window = (Stage) score.getScene().getWindow();
+                System.out.println(resourceBundle.getString("stdOut.exit"));
+                window.close();
             }
 //            default -> System.out.println("E: Key not known: " + keyEvent.getCode());
         }

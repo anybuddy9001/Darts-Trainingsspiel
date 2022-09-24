@@ -34,12 +34,9 @@ public class NumberPrompt {
                 }
             });
         } catch (IOException e) {
-            System.out.println(resourceBundle.getString("mError.numberPrompt.initialisation") + "\n" + e);
-        }
-        try {
-            stage.show();
-        } catch (IllegalStateException e) {
             System.out.println(resourceBundle.getString("mError.numberPrompt.open") + "\n" + e);
+            throw new RuntimeException(e);
         }
+        stage.show();
     }
 }
