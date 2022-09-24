@@ -87,6 +87,7 @@ public class GameController implements Initializable {
         System.out.println(resourceBundle.getString("stdOut.reset"));
         game = new Game(this);
         loose.setText("");
+        this.setScore();
     }
 
     public void setScore() {
