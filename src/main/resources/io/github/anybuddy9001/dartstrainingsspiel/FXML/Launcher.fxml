@@ -13,7 +13,7 @@
         <Image url="@../images/Dartgross.png"/>
     </ImageView>
     <MenuButton focusTraversable="false" layoutX="14.0" layoutY="318.0" mnemonicParsing="false" prefHeight="24.0"
-                prefWidth="170.0" text="Language selection">
+                prefWidth="170.0" text="%launcherWindow.text.languageSelection">
         <items>
             <MenuItem mnemonicParsing="false" onAction="#setLanguageGerman" text="Deutsch"/>
             <MenuItem mnemonicParsing="false" onAction="#setLanguageEnglish" text="English"/>
@@ -25,7 +25,7 @@
             <Font size="50.0"/>
         </font>
     </Text>
-    <Text fx:id="selectedLanguage" fill="WHITE" layoutX="20.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0"
+    <Text fx:id="activeLanguage" fill="WHITE" layoutX="20.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0"
           textAlignment="CENTER" wrappingWidth="158.7294921875">
         <font>
             <Font size="20.0"/>
@@ -50,5 +50,11 @@
     </Text>
     <Button layoutX="301.0" layoutY="234.0" mnemonicParsing="false" onAction="#startEndlessMode" prefHeight="43.0"
             prefWidth="283.0" text="%launcherWindow.button.endlessMode"/>
-    <Button cancelButton="true" layoutX="518.0" layoutY="318.0" mnemonicParsing="false" onAction="#quit" text="Quit"/>
+    <Button cancelButton="true" layoutX="518.0" layoutY="301.0" mnemonicParsing="false" onAction="#quit" text="Quit"/>
+    <Text fill="WHITE" layoutX="450.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%version"
+          textAlignment="RIGHT" wrappingWidth="135.099609375">
+        <font>
+            <Font size="10.0"/>
+        </font>
+    </Text>
 </AnchorPane>

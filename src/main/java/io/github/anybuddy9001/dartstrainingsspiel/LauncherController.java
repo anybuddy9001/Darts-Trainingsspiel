@@ -20,20 +20,24 @@ import java.util.ResourceBundle;
  * Controller for the launcher window
  *
  * @author anybuddy
- * @version 3.0pre1
+ * @version 3.0-pre1.2
  */
 public class LauncherController implements Initializable {
     @Getter
     private static ResourceBundle resourceBundle;
 
     @FXML
-    public Text selectedLanguage;
+    public Text activeLanguage;
     @FXML
     public TextField duration;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         resourceBundle = resources;
+        switch (resources.getLocale().toString()) {
+            case "en" -> activeLanguage.setText("English"); //NON-NLS
+            case "de" -> activeLanguage.setText("German"); //NON-NLS
+        }
     }
 
     @FXML
@@ -43,7 +47,7 @@ public class LauncherController implements Initializable {
 
     @FXML
     public void startEndlessMode() {
-        Stage window = (Stage) selectedLanguage.getScene().getWindow();
+        Stage window = (Stage) activeLanguage.getScene().getWindow();
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")), resourceBundle);
             Scene scene = new Scene(root);
@@ -57,7 +61,7 @@ public class LauncherController implements Initializable {
 
     @FXML
     public void quit() {
-        Stage window = (Stage) selectedLanguage.getScene().getWindow();
+        Stage window = (Stage) activeLanguage.getScene().getWindow();
         System.out.println(resourceBundle.getString("stdOut.exit"));
         window.close();
     }
@@ -76,7 +80,7 @@ public class LauncherController implements Initializable {
 
     private void reset(Locale locale) {
         resourceBundle = ResourceBundle.getBundle("lang", locale);
-        Stage window = (Stage) selectedLanguage.getScene().getWindow();
+        Stage window = (Stage) activeLanguage.getScene().getWindow();
         try {
             Scene newScene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Launcher.fxml")), resourceBundle));
             window.setScene(newScene);
