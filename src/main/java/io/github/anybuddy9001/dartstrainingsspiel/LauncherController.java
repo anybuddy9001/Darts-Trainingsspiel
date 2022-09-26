@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
  * Controller for the launcher window
  *
  * @author anybuddy
- * @version 3.0-pre1.2
+ * @version 3.0-pre1.3
  */
 public class LauncherController implements Initializable {
     @Getter
@@ -49,9 +49,9 @@ public class LauncherController implements Initializable {
     public void startEndlessMode() {
         Stage window = (Stage) activeLanguage.getScene().getWindow();
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Main.fxml")), resourceBundle);
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Game.fxml")), resourceBundle);
             Scene scene = new Scene(root);
-            window.setTitle(resourceBundle.getString("mainWindow.Title"));
+            window.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("gameWindow.Title"));
             window.setScene(scene);
             window.setResizable(false);
         } catch (IOException e) {

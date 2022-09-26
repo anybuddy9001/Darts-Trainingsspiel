@@ -11,11 +11,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Controller for the game windows - Main and NumberPrompt
+ * Controller for the game windows - Game and NumberPrompt
  *
  * @author anybuddy
  * @author Specktulatius
- * @version 3.0pre1
+ * @version 3.0pre1.3
  */
 public class GameController implements Initializable {
     private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
@@ -100,7 +100,7 @@ public class GameController implements Initializable {
     }
 
     /**
-     * Handler for key-presses on the main window
+     * Handler for key-presses on the game window
      *
      * @param keyEvent of the key that was pressed
      */
@@ -116,6 +116,7 @@ public class GameController implements Initializable {
                 System.out.println(resourceBundle.getString("stdOut.exit"));
                 window.close();
             }
+            // Debug option for finding keycodes
 //            default -> System.out.println("E: Key not known: " + keyEvent.getCode());
         }
     }

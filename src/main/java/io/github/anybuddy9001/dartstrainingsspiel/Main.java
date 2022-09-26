@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 /**
  * @author anybuddy
  * @author Specktulatius
- * @version 3.0pre1
+ * @version 3.0pre1.3
  */
 public class Main extends Application {
     private static ResourceBundle resourceBundle;
@@ -23,18 +23,21 @@ public class Main extends Application {
         launch(args);
     }
 
+    @Override
     public void init() {
     }
 
+    @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Launcher.fxml")), resourceBundle);
         Scene scene = new Scene(root);
-        primaryStage.setTitle(resourceBundle.getString("launcherWindow.Title"));
+        primaryStage.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("launcherWindow.Title"));
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setResizable(false);
     }
 
+    @Override
     public void stop() {
     }
 }

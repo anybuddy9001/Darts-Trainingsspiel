@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 /**
  * @author anybuddy
  * @author Specktulatius
- * @version 3.0pre1
+ * @version 3.0pre1.3
  */
 public class NumberPrompt {
     private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
@@ -24,7 +24,7 @@ public class NumberPrompt {
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/NumberPrompt.fxml")), resourceBundle);
             Scene scene = new Scene(root);
-            stage.setTitle(resourceBundle.getString("numberPromptWindow.Title") + " (" + number + ")");
+            stage.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("numberPromptWindow.Title") + " (" + number + ")");
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
