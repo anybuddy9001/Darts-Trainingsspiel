@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
  *
  * @author anybuddy
  * @author Specktulatius
- * @version 3.0pre1.4
+ * @version 3.0pre2
  */
 public class GameController implements Initializable {
     private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
@@ -85,7 +85,7 @@ public class GameController implements Initializable {
 
     @FXML
     public void newGame() {
-        System.out.println(resourceBundle.getString("stdOut.reset"));
+        LogController.println(resourceBundle.getString("stdOut.reset"));
         game = new Game(this);
         loose.setText("");
         this.setScore();
@@ -114,7 +114,7 @@ public class GameController implements Initializable {
             case R, DECIMAL -> this.newGame();
             case Q -> Platform.exit();
             // Debug option for finding keycodes
-//            default -> System.out.println("E: Key not known: " + keyEvent.getCode());
+//            default -> LogController.println("E: Key not known: " + keyEvent.getCode());
         }
     }
 }

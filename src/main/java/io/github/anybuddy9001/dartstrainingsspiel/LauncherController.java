@@ -26,6 +26,8 @@ import java.util.ResourceBundle;
 public class LauncherController implements Initializable {
     @Getter
     private static ResourceBundle resourceBundle;
+    @Getter
+    private static Stage logWindow;
 
     @FXML
     public Text activeLanguage;
@@ -39,11 +41,32 @@ public class LauncherController implements Initializable {
             case "en" -> activeLanguage.setText("English"); //NON-NLS
             case "de" -> activeLanguage.setText("German"); //NON-NLS
         }
+        if (logWindow == null) {
+            createNewLogWindow();
+        }
+    }
+
+    private void createNewLogWindow() {
+        logWindow = new Stage();
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Log.fxml")), resourceBundle);
+            Scene scene = new Scene(root);
+            logWindow.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("logWindow.Title"));
+            logWindow.setScene(scene);
+            logWindow.setResizable(true);
+        } catch (IOException e) {
+            LogController.println(resourceBundle.getString("mError.log.open") + "\n" + e);
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     public void startChallengeMode() {
-        System.out.println("Challenge Mode is not yet implemented"); //NON-NLS
+        LogController.println("Challenge Mode is not yet implemented"); //NON-NLS
+        Stage window = (Stage) activeLanguage.getScene().getWindow();
+        logWindow.setX(window.getX() + window.getWidth());
+        logWindow.setY(window.getY());
+        logWindow.show();
     }
 
     @FXML
@@ -55,6 +78,10 @@ public class LauncherController implements Initializable {
             window.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("gameWindow.Title"));
             window.setScene(scene);
             window.setResizable(false);
+            window.setOnCloseRequest(event -> Platform.exit());
+            logWindow.setX(window.getX() + window.getWidth());
+            logWindow.setY(window.getY());
+            logWindow.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -84,7 +111,7 @@ public class LauncherController implements Initializable {
             Scene newScene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Launcher.fxml")), resourceBundle));
             window.setScene(newScene);
         } catch (IOException e) {
-            System.out.println(resourceBundle.getString("fError.launcherWindow.resetFailed") + "\n" + e);
+            LogController.println(resourceBundle.getString("fError.launcherWindow.resetFailed") + "\n" + e);
             this.quit();
         }
     }

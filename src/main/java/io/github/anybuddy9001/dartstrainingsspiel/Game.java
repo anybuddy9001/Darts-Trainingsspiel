@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 /**
  * @author anybuddy
  * @author Specktulatius
- * @version 3.0pre1
+ * @version 3.0pre2
  */
 public class Game {
     private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
@@ -78,9 +78,9 @@ public class Game {
     private void checkScore() {
         if (highscore < score) {
             highscore = score;
-//             System.out.println(resourceBundle.getString("kw.highscore") + ": " + highscore);
+//             LogController.println(resourceBundle.getString("kw.highscore") + ": " + highscore);
         }
-        System.out.println(resourceBundle.getString("kw.score") + ": " + score);
+        LogController.println(resourceBundle.getString("kw.score") + ": " + score);
         mainController.setScore();
     }
 }
