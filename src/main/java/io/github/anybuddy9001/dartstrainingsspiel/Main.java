@@ -1,6 +1,7 @@
 package io.github.anybuddy9001.dartstrainingsspiel;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,7 +14,7 @@ import java.util.ResourceBundle;
 /**
  * @author anybuddy
  * @author Specktulatius
- * @version 3.0pre1.3
+ * @version 3.0pre1.4
  */
 public class Main extends Application {
     private static ResourceBundle resourceBundle;
@@ -33,11 +34,13 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         primaryStage.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("launcherWindow.Title"));
         primaryStage.setScene(scene);
-        primaryStage.show();
         primaryStage.setResizable(false);
+        primaryStage.setOnCloseRequest(event -> Platform.exit());
+        primaryStage.show();
     }
 
     @Override
     public void stop() {
+        LogController.println(resourceBundle.getString("stdOut.exit"));
     }
 }

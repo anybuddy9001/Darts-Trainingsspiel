@@ -1,5 +1,6 @@
 package io.github.anybuddy9001.dartstrainingsspiel;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,7 +16,7 @@ import java.util.ResourceBundle;
  *
  * @author anybuddy
  * @author Specktulatius
- * @version 3.0pre1.3
+ * @version 3.0pre1.4
  */
 public class GameController implements Initializable {
     private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
@@ -111,11 +112,7 @@ public class GameController implements Initializable {
             case DIGIT2, NUMPAD2 -> this.zweiTreffer();
             case DIGIT3, NUMPAD3 -> this.dreiTreffer();
             case R, DECIMAL -> this.newGame();
-            case Q -> {
-                Stage window = (Stage) score.getScene().getWindow();
-                System.out.println(resourceBundle.getString("stdOut.exit"));
-                window.close();
-            }
+            case Q -> Platform.exit();
             // Debug option for finding keycodes
 //            default -> System.out.println("E: Key not known: " + keyEvent.getCode());
         }

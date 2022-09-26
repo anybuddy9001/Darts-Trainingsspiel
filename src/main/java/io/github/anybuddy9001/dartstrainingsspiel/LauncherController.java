@@ -1,5 +1,6 @@
 package io.github.anybuddy9001.dartstrainingsspiel;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -20,7 +21,7 @@ import java.util.ResourceBundle;
  * Controller for the launcher window
  *
  * @author anybuddy
- * @version 3.0-pre1.3
+ * @version 3.0-pre1.4
  */
 public class LauncherController implements Initializable {
     @Getter
@@ -61,9 +62,7 @@ public class LauncherController implements Initializable {
 
     @FXML
     public void quit() {
-        Stage window = (Stage) activeLanguage.getScene().getWindow();
-        System.out.println(resourceBundle.getString("stdOut.exit"));
-        window.close();
+        Platform.exit();
     }
 
     @FXML
