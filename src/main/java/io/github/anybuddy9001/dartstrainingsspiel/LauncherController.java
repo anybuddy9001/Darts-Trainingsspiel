@@ -110,6 +110,8 @@ public class LauncherController implements Initializable {
         try {
             Scene newScene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Launcher.fxml")), resourceBundle));
             window.setScene(newScene);
+            logWindow.close();
+            createNewLogWindow();
         } catch (IOException e) {
             LogController.println(resourceBundle.getString("fError.launcherWindow.resetFailed") + "\n" + e);
             this.quit();
