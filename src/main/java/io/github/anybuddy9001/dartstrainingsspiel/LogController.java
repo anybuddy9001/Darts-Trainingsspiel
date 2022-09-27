@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 
 /**
  * @author anybuddy
- * @version 3.0pre2
  */
 public class LogController implements Initializable {
     private static TextArea staticLogOut;

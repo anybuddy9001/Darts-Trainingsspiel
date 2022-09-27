@@ -21,7 +21,6 @@ import java.util.ResourceBundle;
  * Controller for the launcher window
  *
  * @author anybuddy
- * @version 3.0-pre1.4
  */
 public class LauncherController implements Initializable {
     @Getter

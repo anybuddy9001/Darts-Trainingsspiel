@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 /**
  * @author anybuddy
  * @author Specktulatius
- * @version 3.0pre2
  */
 public class Game {
     private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;

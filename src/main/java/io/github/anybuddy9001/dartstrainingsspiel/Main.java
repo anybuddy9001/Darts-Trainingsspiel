@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 /**
  * @author anybuddy
  * @author Specktulatius
- * @version 3.0pre1.4
  */
 public class Main extends Application {
     private static ResourceBundle resourceBundle;

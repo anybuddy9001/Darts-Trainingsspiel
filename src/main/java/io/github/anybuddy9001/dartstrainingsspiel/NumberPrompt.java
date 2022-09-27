@@ -14,7 +14,6 @@ import java.util.ResourceBundle;
 /**
  * @author anybuddy
  * @author Specktulatius
- * @version 3.0pre1.3
  */
 public class NumberPrompt {
     private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
