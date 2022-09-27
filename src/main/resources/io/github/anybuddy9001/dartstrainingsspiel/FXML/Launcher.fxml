@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0"
             prefWidth="602.0"
-            snapToPixel="false" xmlns="http://javafx.com/javafx/18"
+            snapToPixel="false" styleClass="big-anchor" stylesheets="@application.css"
+            xmlns="http://javafx.com/javafx/18"
             fx:controller="io.github.anybuddy9001.dartstrainingsspiel.LauncherController">
-    <ImageView fitHeight="356.0" fitWidth="673.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="@../images/Dartgross.png"/>
-    </ImageView>
     <MenuButton focusTraversable="false" layoutX="14.0" layoutY="318.0" mnemonicParsing="false" prefHeight="24.0"
                 prefWidth="170.0" text="%launcherWindow.text.languageSelection">
         <items>

@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -22,6 +23,10 @@ public class GameController implements Initializable {
 
     private static final NumberPrompt numberPrompt = new NumberPrompt();
     private static Game game;
+
+    // Game
+    @FXML
+    public Text timeDisplay;
     @FXML
     private TextField score;
     @FXML
@@ -32,6 +37,7 @@ public class GameController implements Initializable {
     private Button closeButton;
     @FXML
     private TextField error;
+    // Number Prompt
     @FXML
     private TextField numberPromptIn;
 
@@ -41,6 +47,10 @@ public class GameController implements Initializable {
             game = new Game(this);
             this.setScore();
         }
+    }
+
+    @FXML
+    public void startStopTimer() {
     }
 
     @FXML
