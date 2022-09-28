@@ -31,7 +31,7 @@ public class LauncherController implements Initializable {
     @FXML
     public Text activeLanguage;
     @FXML
-    public TextField duration;
+    public TextField durationIn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -35,16 +35,16 @@ public class GameController implements Initializable {
     @FXML
     public Text timeDisplay;
     @FXML
-    private TextField score;
+    private TextField scoreDisplay;
     @FXML
-    private TextField highscore;
+    private TextField highscoreDisplay;
     @FXML
-    private TextField loose;
+    private TextField statusDisplay;
     @FXML
     private Button closeButton;
-    @FXML
-    private TextField error;
     // Number Prompt
+    @FXML
+    private TextField numberPromptErrOut;
     @FXML
     private TextField numberPromptIn;
 
@@ -120,10 +120,10 @@ public class GameController implements Initializable {
                 numberPromptIn.clear();
                 game.setNumCache(-1);
             } else {
-                error.setText(resourceBundle.getString("sError.numberPrompt.amount"));
+                numberPromptErrOut.setText(resourceBundle.getString("sError.numberPrompt.amount"));
             }
         } catch (NumberFormatException e) {
-            error.setText(resourceBundle.getString("sError.numberPrompt.amount"));
+            numberPromptErrOut.setText(resourceBundle.getString("sError.numberPrompt.amount"));
         }
     }
 
@@ -131,17 +131,17 @@ public class GameController implements Initializable {
     public void newGame() {
         LogController.println(resourceBundle.getString("stdOut.reset"));
         game = new Game(this);
-        loose.setText("");
+        statusDisplay.setText("");
         this.setScore();
     }
 
     public void setScore() {
         if (game.getScore() >= 0) {
-            score.setText(resourceBundle.getString("kw.score") + ": " + game.getScore());
+            scoreDisplay.setText(resourceBundle.getString("kw.score") + ": " + game.getScore());
         } else {
-            loose.setText(resourceBundle.getString("mainWindow.textField.lost"));
+            statusDisplay.setText(resourceBundle.getString("mainWindow.textField.lost"));
         }
-        highscore.setText(resourceBundle.getString("kw.highscore") + ": " + game.getHighscore());
+        highscoreDisplay.setText(resourceBundle.getString("kw.highscore") + ": " + game.getHighscore());
     }
 
     /**

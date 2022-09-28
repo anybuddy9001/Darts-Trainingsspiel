@@ -35,7 +35,7 @@
             <Font size="17.0"/>
         </font>
     </Text>
-    <TextField fx:id="duration" alignment="CENTER" layoutX="395.0" layoutY="207.0" maxHeight="-Infinity"
+    <TextField fx:id="durationIn" alignment="CENTER" layoutX="395.0" layoutY="207.0" maxHeight="-Infinity"
                maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefColumnCount="1" prefHeight="20.0"
                prefWidth="45.0" promptText="10"/>
     <Text fill="WHITE" layoutX="446.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="min"

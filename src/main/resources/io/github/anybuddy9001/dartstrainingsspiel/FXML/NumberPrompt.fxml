@@ -22,7 +22,8 @@
             <Font size="24.0"/>
         </font>
     </TextField>
-    <TextField fx:id="error" editable="false" focusTraversable="false" layoutX="79.0" layoutY="14.0" prefHeight="25.0"
+    <TextField fx:id="numberPromptErrOut" editable="false" focusTraversable="false" layoutX="79.0" layoutY="14.0"
+               prefHeight="25.0"
                prefWidth="214.0">
         <font>
             <Font size="11.0"/>

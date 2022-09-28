@@ -41,19 +41,21 @@
                 <GridPane.margin>
                     <Insets right="10.0"/>
                 </GridPane.margin>
-                <TextField fx:id="highscore" editable="false" focusTraversable="false" prefHeight="45.0"
+                <TextField fx:id="highscoreDisplay" editable="false" focusTraversable="false" prefHeight="45.0"
                            prefWidth="240.0" promptText="Score:">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="score" editable="false" focusTraversable="false" prefHeight="45.0" prefWidth="240.0"
+                <TextField fx:id="scoreDisplay" editable="false" focusTraversable="false" prefHeight="45.0"
+                           prefWidth="240.0"
                            promptText="Highscore:">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </TextField>
-                <TextField fx:id="loose" alignment="CENTER" editable="false" focusTraversable="false" prefHeight="80.0"
+                <TextField fx:id="statusDisplay" alignment="CENTER" editable="false" focusTraversable="false"
+                           prefHeight="80.0"
                            prefWidth="240.0" promptText="Start?">
                     <font>
                         <Font size="32.0"/>
