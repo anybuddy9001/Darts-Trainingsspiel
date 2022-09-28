@@ -2,14 +2,21 @@ package io.github.anybuddy9001.dartstrainingsspiel;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -21,7 +28,7 @@ import java.util.ResourceBundle;
 public class GameController implements Initializable {
     private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
 
-    private static final NumberPrompt numberPrompt = new NumberPrompt();
+    private static Stage numberPrompt;
     private static Game game;
 
     // Game
@@ -47,6 +54,33 @@ public class GameController implements Initializable {
             game = new Game(this);
             this.setScore();
         }
+        if (numberPrompt == null) {
+            createNumberPrompt();
+        }
+    }
+
+    private void createNumberPrompt() {
+        try {
+            numberPrompt = new Stage();
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/NumberPrompt.fxml")), resourceBundle);
+            Scene scene = new Scene(root);
+            scene.setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ESCAPE) {
+                    numberPrompt.close();
+                }
+            });
+            numberPrompt.setScene(scene);
+            numberPrompt.initModality(Modality.APPLICATION_MODAL);
+            numberPrompt.setResizable(false);
+        } catch (IOException e) {
+            System.out.println(resourceBundle.getString("fError.numberPrompt.open") + "\n" + e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void openNumberPrompt(int number) {
+        numberPrompt.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("numberPromptWindow.Title") + " (" + number + ")");
+        numberPrompt.show();
     }
 
     @FXML
@@ -61,19 +95,19 @@ public class GameController implements Initializable {
     @FXML
     public void einTreffer() {
         game.setNumCache(1);
-        numberPrompt.open(1);
+        this.openNumberPrompt(1);
     }
 
     @FXML
     public void zweiTreffer() {
         game.setNumCache(2);
-        numberPrompt.open(2);
+        this.openNumberPrompt(2);
     }
 
     @FXML
     public void dreiTreffer() {
         game.setNumCache(3);
-        numberPrompt.open(3);
+        this.openNumberPrompt(3);
     }
 
     @FXML
@@ -83,6 +117,7 @@ public class GameController implements Initializable {
             boolean success = game.handleNumberPromptOutput(Integer.parseInt(numberPromptIn.getText()));
             if (success) {
                 window.close();
+                numberPromptIn.clear();
                 game.setNumCache(-1);
             } else {
                 error.setText(resourceBundle.getString("sError.numberPrompt.amount"));

@@ -54,7 +54,7 @@ public class LauncherController implements Initializable {
             logWindow.setScene(scene);
             logWindow.setResizable(true);
         } catch (IOException e) {
-            LogController.println(resourceBundle.getString("mError.log.open") + "\n" + e);
+            LogController.println(resourceBundle.getString("fError.log.open") + "\n" + e);
             throw new RuntimeException(e);
         }
     }
@@ -82,6 +82,7 @@ public class LauncherController implements Initializable {
             logWindow.setY(window.getY());
             logWindow.show();
         } catch (IOException e) {
+            LogController.println(resourceBundle.getString("fError.launcherWindow.startGame"));
             throw new RuntimeException(e);
         }
     }
@@ -112,8 +113,8 @@ public class LauncherController implements Initializable {
             logWindow.close();
             createNewLogWindow();
         } catch (IOException e) {
-            LogController.println(resourceBundle.getString("fError.launcherWindow.resetFailed") + "\n" + e);
-            this.quit();
+            LogController.println(resourceBundle.getString("fError.launcherWindow.reset") + "\n" + e);
+            throw new RuntimeException(e);
         }
     }
 }
