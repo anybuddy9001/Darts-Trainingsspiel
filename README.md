@@ -2,7 +2,7 @@
 
 # **Darts Trainingsspiel**
 
-Dies ist ein kleines Java -Projekt mit OpenJFX (Javafx),
+Dies ist ein Java-Projekt mit OpenJFX (Javafx)
 mit dem Sie Ihre Darts-Fähigkeiten mithilfe eines Punktesystems trainieren können.
 
 Specktulatius hat das Spiel vor einiger Zeit für Michael gemacht. <br>
@@ -12,12 +12,12 @@ aber er verbleibt dennoch als Autor in den Docs. :)
 ## Anleitung zum Spiel:
 
 Hänge einen beliebigen Practice Ring bei dem T20er Segment auf und versuche,
-innerhalb vom Ring zu treffen. Unten siehst du das Punkte-System aufgeführt.
+innerhalb vom Ring zu treffen. Unten siehst du die Punktetabelle aufgeführt.
 Als Triple Treffer werden auch Treffer in der T1 und T5 gezählt.
 Versuche, möglichst viele Punkte zu erreichen. Das Spiel ist verloren,
 sobald du bei 0 Punkten bist und keinen Treffer hast.
 
-## Punkte-System
+## Punktetabelle
 
 | Triple Treffer -> <br> Darts im Practice Ring  	 | 0  	 | 1 	 | 2 	 | 3 	 |
 |--------------------------------------------------|------|-----|-----|-----|
@@ -40,7 +40,7 @@ das als jar-Datei ausgeliefert wird.
    Maustaste-> "Öffnen").
 2. Spaß haben
 
-###### Option 2
+###### Option 2 (nicht empfohlen)
 
 1. Öffnen Sie PowerShell
 2. Navigieren Sie mit `cd` zu dem Ordner in dem die heruntergeladene Datei liegt <br>
@@ -57,6 +57,10 @@ das als jar-Datei ausgeliefert wird.
 
 ## Häufige Probleme
 
+###### Alle Schaltflächen zur Punkteeingabe sind ausgegraut und reagieren auf keine Eingaben
+
+Um Punkteingaben tätigen zu können muss zuerst der Timer gestartet werden.
+
 ###### Error: Could not find or load main class Main <br> Caused by: java.lang.NoClassDefFoundError: javafx/application/Application
 
 Ihre Java-Installation enthält keine OpenJFX (Javafx) Bibliothek. <br>
@@ -65,8 +69,8 @@ Installieren Sie ein JDK, das diese enthält (z.B. Azul-Zulu) und versuchen es e
 
 ## Entwicklung
 
-Ich benutze Intellij-Community von JetBrains mit dem Azul-Zulu JDK (18.0.2). <br>
-Zusätzlich verwende ich die `lombok`-Bibliothek.
+Ich benutze Intellij-Ultimate von JetBrains (für Studierende) mit dem Azul-Zulu JDK (18.0.2). <br>
+Zusätzlich verwende ich die [lombok](https://projectlombok.org/)-Bibliothek.
 
 ## Mitwirkende
 
@@ -79,7 +83,7 @@ Zusätzlich verwende ich die `lombok`-Bibliothek.
 
 ## **Darts Training Game**
 
-This is a small Java project with openJFX (JavaFX) to help you train your Darts skills with a point reward system.
+This is a Java project with openJFX (JavaFX) to help you train your Darts skills with a point reward system.
 
 Specktulatius made this for Michael some time ago. <br>
 I almost reworked everything, but he still remains an author in the Docs. :)
@@ -87,7 +91,7 @@ I almost reworked everything, but he still remains an author in the Docs. :)
 ## Instructions for the game:
 
 Hang up any practice ring at the T20 segment and attempt to hit within the ring.
-You will see the points system listed below.
+You will see the point system listed below.
 Hits in T1 and T5 are also counted as triple hits.
 Try to achieve as many points as possible.
 The game is lost when you are at 0 points and don't hit anything.
@@ -114,7 +118,7 @@ You can then just start is as you would any jar-file.
 1. Double-click on the downloaded jar-file in your file explorer (or right-click -> "Open")
 2. Enjoy
 
-###### Option 2
+###### Option 2 (not recommended)
 
 1. Open Powershell
 2. Navigate to the folder you downloaded the file to with `cd`
@@ -131,6 +135,10 @@ You can then just start is as you would any jar-file.
 
 ## Common Issues
 
+###### All buttons for the point input are grayed out and do not respond to any actions
+
+In order to be able to make point inputs, the timer must be running.
+
 ###### Error: Could not find or load main class Main <br> Caused by: java.lang.NoClassDefFoundError: javafx/application/Application
 
 Your java installation does not have openJFX (JavaFX) included. <br>
@@ -139,8 +147,8 @@ Install and use one that does (e.g. Azul-Zulu) and try again. <br>
 
 ## Development
 
-I use IntelliJ-Community by JetBrains with the Azul-Zulu JDK (18.0.2). <br>
-Additionally I use the `lombok` library.
+I use IntelliJ-Ultimate by JetBrains (for Students) with the Azul-Zulu JDK (18.0.2). <br>
+Additionally I use the [lombok](https://projectlombok.org/) library.
 
 ## Contributors
 
