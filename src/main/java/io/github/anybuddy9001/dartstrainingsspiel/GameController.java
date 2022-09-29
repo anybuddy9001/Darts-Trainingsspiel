@@ -30,10 +30,9 @@ public class GameController implements Initializable {
 
     private static Stage numberPrompt;
     private static Game game;
+    private static boolean locked;
 
     // Game
-    @FXML
-    public Text timeDisplay;
     @FXML
     private TextField scoreDisplay;
     @FXML
@@ -41,18 +40,34 @@ public class GameController implements Initializable {
     @FXML
     private TextField statusDisplay;
     @FXML
-    private Button closeButton;
+    private Button buttonStartStopTimer;
+    @FXML
+    private Button buttonNoHit;
+    @FXML
+    private Button buttonOneHit;
+    @FXML
+    private Button buttonTwoHits;
+    @FXML
+    private Button buttonThreeHits;
+    // Timer
+    private boolean timerIsRunning = false;
+    @FXML
+    private Text timerDisplay;
     // Number Prompt
     @FXML
     private TextField numberPromptErrOut;
     @FXML
     private TextField numberPromptIn;
+    @FXML
+    private Button numberPromptCloseButton;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if (game == null) {
             game = new Game(this);
-            this.setScore();
+            this.updateScore();
+            this.lock(false);
         }
         if (numberPrompt == null) {
             createNumberPrompt();
@@ -84,10 +99,6 @@ public class GameController implements Initializable {
     }
 
     @FXML
-    public void startStopTimer() {
-    }
-
-    @FXML
     public void keinTreffer() {
         game.keinTreffer();
     }
@@ -112,7 +123,7 @@ public class GameController implements Initializable {
 
     @FXML
     public void closeNumberPrompt() {
-        Stage window = (Stage) closeButton.getScene().getWindow();
+        Stage window = (Stage) numberPromptCloseButton.getScene().getWindow();
         try {
             boolean success = game.handleNumberPromptOutput(Integer.parseInt(numberPromptIn.getText()));
             if (success) {
@@ -128,20 +139,29 @@ public class GameController implements Initializable {
     }
 
     @FXML
-    public void newGame() {
-        LogController.println(resourceBundle.getString("stdOut.reset"));
-        game = new Game(this);
-        statusDisplay.setText("");
-        this.setScore();
+    public void startStopTimer() {
+        if (!timerIsRunning) {
+            game.startTimer();
+            statusDisplay.clear();
+            unlock();
+        } else {
+            game.pauseTimer();
+            statusDisplay.setText(resourceBundle.getString("mainWindow.textField.status.paused"));
+            lock(false);
+        }
+        timerIsRunning = !timerIsRunning;
     }
 
-    public void setScore() {
-        if (game.getScore() >= 0) {
-            scoreDisplay.setText(resourceBundle.getString("kw.score") + ": " + game.getScore());
-        } else {
-            statusDisplay.setText(resourceBundle.getString("mainWindow.textField.lost"));
-        }
-        highscoreDisplay.setText(resourceBundle.getString("kw.highscore") + ": " + game.getHighscore());
+    @FXML
+    public void newGame() {
+        LogController.println(resourceBundle.getString("stdOut.reset"));
+        game.stopTimer();
+        timerIsRunning = false;
+        game = new Game(this);
+        statusDisplay.setText("");
+        this.updateScore();
+        lock(false);
+        buttonStartStopTimer.setDisable(false);
     }
 
     /**
@@ -149,16 +169,63 @@ public class GameController implements Initializable {
      *
      * @param keyEvent of the key that was pressed
      */
+    @FXML
     public void keyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
-            case DIGIT0, NUMPAD0 -> this.keinTreffer();
-            case DIGIT1, NUMPAD1 -> this.einTreffer();
-            case DIGIT2, NUMPAD2 -> this.zweiTreffer();
-            case DIGIT3, NUMPAD3 -> this.dreiTreffer();
+            case DIGIT0, NUMPAD0 -> {
+                if (!locked) this.keinTreffer();
+            }
+            case DIGIT1, NUMPAD1 -> {
+                if (!locked) this.einTreffer();
+            }
+            case DIGIT2, NUMPAD2 -> {
+                if (!locked) this.zweiTreffer();
+            }
+            case DIGIT3, NUMPAD3 -> {
+                if (!locked) this.dreiTreffer();
+            }
             case R, DECIMAL -> this.newGame();
             case Q -> Platform.exit();
             // Debug option for finding keycodes
 //            default -> LogController.println("E: Key not known: " + keyEvent.getCode());
         }
+    }
+
+    public void updateTimer(String time) {
+        timerDisplay.setText(resourceBundle.getString("kw.timer") + " " + time);
+    }
+
+    public void updateScore() {
+        if (game.getScore() >= 0) {
+            scoreDisplay.setText(resourceBundle.getString("kw.score") + ": " + game.getScore());
+            highscoreDisplay.setText(resourceBundle.getString("kw.highscore") + ": " + game.getHighscore());
+        } else {
+            this.startStopTimer();
+            statusDisplay.setText(resourceBundle.getString("mainWindow.textField.status.gameOver"));
+            LogController.println("I: " + resourceBundle.getString("mainWindow.textField.status.gameOver")); //NON-NLS
+            lock(true);
+        }
+    }
+
+    private void lock(boolean gameOver) {
+        locked = true;
+
+        if (gameOver) {
+            buttonStartStopTimer.setDisable(true);
+        }
+        buttonNoHit.setDisable(true);
+        buttonOneHit.setDisable(true);
+        buttonTwoHits.setDisable(true);
+        buttonThreeHits.setDisable(true);
+    }
+
+    private void unlock() {
+        locked = false;
+
+        buttonStartStopTimer.setDisable(false);
+        buttonNoHit.setDisable(false);
+        buttonOneHit.setDisable(false);
+        buttonTwoHits.setDisable(false);
+        buttonThreeHits.setDisable(false);
     }
 }

@@ -16,64 +16,74 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="361.0" minHeight="10.0" prefHeight="353.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="365.0" minHeight="10.0" prefHeight="365.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="361.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <VBox alignment="CENTER" spacing="16.0">
                 <GridPane.margin>
                     <Insets left="10.0"/>
                 </GridPane.margin>
-                <Text fx:id="timeDisplay" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time: 10:00"
+                <Text fx:id="timerDisplay" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time: --:--"
                       textAlignment="CENTER">
                     <font>
                         <Font size="28.0"/>
                     </font>
                 </Text>
-                <Button mnemonicParsing="false" onAction="#keinTreffer" prefHeight="50.0" prefWidth="240.0"
-                        text="%mainWindow.button.noHit" textAlignment="CENTER"/>
-                <Button mnemonicParsing="false" onAction="#einTreffer" prefHeight="50.0" prefWidth="240.0"
-                        text="%mainWindow.button.oneHit"/>
-                <Button mnemonicParsing="false" onAction="#zweiTreffer" prefHeight="50.0" prefWidth="240.0"
-                        text="%mainWindow.button.twoHits"/>
-                <Button mnemonicParsing="false" onAction="#dreiTreffer" prefHeight="50.0" prefWidth="240.0"
-                        text="%mainWindow.button.threeHits"/>
+                <Button fx:id="buttonNoHit" mnemonicParsing="false" onAction="#keinTreffer" prefHeight="50.0"
+                        prefWidth="240.0" text="%mainWindow.button.noHit" textAlignment="CENTER"/>
+                <Button fx:id="buttonOneHit" mnemonicParsing="false" onAction="#einTreffer" prefHeight="50.0"
+                        prefWidth="240.0" text="%mainWindow.button.oneHit"/>
+                <Button fx:id="buttonTwoHits" mnemonicParsing="false" onAction="#zweiTreffer" prefHeight="50.0"
+                        prefWidth="240.0" text="%mainWindow.button.twoHits"/>
+                <Button fx:id="buttonThreeHits" mnemonicParsing="false" onAction="#dreiTreffer" prefHeight="50.0"
+                        prefWidth="240.0" text="%mainWindow.button.threeHits"/>
             </VBox>
             <VBox alignment="CENTER" fillWidth="false" spacing="11.0" GridPane.columnIndex="1">
                 <GridPane.margin>
                     <Insets right="10.0"/>
                 </GridPane.margin>
                 <TextField fx:id="highscoreDisplay" editable="false" focusTraversable="false" prefHeight="45.0"
-                           prefWidth="240.0" promptText="Score:">
+                           prefWidth="240.0">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </TextField>
                 <TextField fx:id="scoreDisplay" editable="false" focusTraversable="false" prefHeight="45.0"
-                           prefWidth="240.0"
-                           promptText="Highscore:">
+                           prefWidth="240.0">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </TextField>
                 <TextField fx:id="statusDisplay" alignment="CENTER" editable="false" focusTraversable="false"
-                           prefHeight="80.0"
-                           prefWidth="240.0" promptText="Start?">
+                           prefHeight="80.0" prefWidth="240.0" text="%mainWindow.textField.status.init">
                     <font>
                         <Font size="32.0"/>
                     </font>
                 </TextField>
-                <Button mnemonicParsing="false" onAction="#startStopTimer" prefHeight="38.0" prefWidth="240.0"
-                        text="%mainWindow.button.startStopTimer" textAlignment="CENTER">
+                <Button fx:id="buttonStartStopTimer" mnemonicParsing="false" onAction="#startStopTimer"
+                        prefHeight="38.0"
+                        prefWidth="240.0" text="%mainWindow.button.startStopTimer" textAlignment="CENTER">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#newGame" prefHeight="38.0" prefWidth="240.0"
+                <Button fx:id="newGame" mnemonicParsing="false" onAction="#newGame" prefHeight="38.0" prefWidth="240.0"
                         text="%mainWindow.button.newGame">
                     <font>
                         <Font size="18.0"/>
                     </font>
                 </Button>
             </VBox>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%version" textAlignment="RIGHT"
+                  GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1"
+                  GridPane.valignment="CENTER">
+                <font>
+                    <Font size="10.0"/>
+                </font>
+                <GridPane.margin>
+                    <Insets bottom="30.0" right="20.0"/>
+                </GridPane.margin>
+            </Text>
         </GridPane>
     </center>
 </BorderPane>

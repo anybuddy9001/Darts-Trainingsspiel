@@ -28,6 +28,10 @@ public class LauncherController implements Initializable {
     @Getter
     private static Stage logWindow;
 
+    @Getter
+    private static final int gameDuration = 0;
+    @Getter
+    private static Game.Type gameType;
     @FXML
     public Text activeLanguage;
     @FXML
@@ -70,6 +74,7 @@ public class LauncherController implements Initializable {
 
     @FXML
     public void startEndlessMode() {
+        gameType = Game.Type.ENDLESS;
         Stage window = (Stage) activeLanguage.getScene().getWindow();
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Game.fxml")), resourceBundle);

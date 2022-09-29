@@ -1,5 +1,9 @@
 package io.github.anybuddy9001.dartstrainingsspiel;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.util.Duration;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +17,8 @@ public class Game {
     private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
 
     private final GameController mainController;
+    private Timeline timeline;
+    private int second = LauncherController.getGameDuration();
     @Setter
     @Getter
     private int highscore = 0;
@@ -25,11 +31,13 @@ public class Game {
 
     public Game(GameController mainController) {
         this.mainController = mainController;
+        mainController.updateTimer(String.format("%02d:%02d", (second % 3600) / 60, second % 60)); //NON-NLS
+        initializeTimer();
     }
 
     public void keinTreffer() {
         score--;
-        this.checkScore();
+        this.updateScore();
     }
 
     public boolean handleNumberPromptOutput(int triples) {
@@ -52,7 +60,7 @@ public class Game {
             }
             case 1 -> score += 1;
         }
-        this.checkScore();
+        this.updateScore();
     }
 
     public void ZweiTreffer(int Triple) {
@@ -61,7 +69,7 @@ public class Game {
             case 1 -> score += 2;
             case 2 -> score += 3;
         }
-        this.checkScore();
+        this.updateScore();
     }
 
     public void DreiTreffer(int Triple) {
@@ -71,15 +79,45 @@ public class Game {
             case 2 -> score += 4;
             case 3 -> score += 5;
         }
-        this.checkScore();
+        this.updateScore();
     }
 
-    private void checkScore() {
+    private void updateScore() {
         if (highscore < score) {
             highscore = score;
 //             LogController.println(resourceBundle.getString("kw.highscore") + ": " + highscore);
         }
         LogController.println(resourceBundle.getString("kw.score") + ": " + score);
-        mainController.setScore();
+        mainController.updateScore();
+    }
+
+    private void initializeTimer() {
+        if (LauncherController.getGameType() == Type.ENDLESS) {
+            timeline = new Timeline(new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
+                second++;
+                mainController.updateTimer(String.format("%02d:%02d", (second % 3600) / 60, second % 60)); //NON-NLS
+            }));
+//            case CHALLENGE -> timeline = new Timeline(new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
+//                if (second-- > 0)
+//                    mainController.updateTimer(String.format("%02d:%02d", (second % 3600) / 60, second % 60)); //NON-NLS
+//            }));
+        }
+        timeline.setCycleCount(Timeline.INDEFINITE);
+    }
+
+    public void startTimer() {
+        timeline.play();
+    }
+
+    public void pauseTimer() {
+        timeline.pause();
+    }
+
+    public void stopTimer() {
+        timeline.stop();
+    }
+
+    enum Type {
+        ENDLESS, CHALLENGE
     }
 }
