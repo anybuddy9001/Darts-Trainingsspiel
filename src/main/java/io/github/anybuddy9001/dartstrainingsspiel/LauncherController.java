@@ -33,9 +33,9 @@ public class LauncherController implements Initializable {
     @Getter
     private static Game.Type gameType;
     @FXML
-    public Text activeLanguage;
+    private Text activeLanguage;
     @FXML
-    public TextField durationIn;
+    private TextField durationIn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
