@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
  * @author Specktulatius
  */
 public class GameController implements Initializable {
-    private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
+    private static ResourceBundle resourceBundle;  //NON-NLS
 
     private static Stage numberPrompt;
     private static Game game;
@@ -64,6 +64,7 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        resourceBundle = resources;
         if (game == null) {
             game = new Game(this);
             this.updateScore();
