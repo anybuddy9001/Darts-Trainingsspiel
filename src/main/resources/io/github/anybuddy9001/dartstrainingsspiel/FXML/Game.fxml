@@ -57,12 +57,12 @@
                 <TextField fx:id="statusDisplay" alignment="CENTER" editable="false" focusTraversable="false"
                            prefHeight="80.0" prefWidth="240.0" text="%mainWindow.textField.status.init">
                     <font>
-                        <Font size="32.0"/>
+                        <Font size="30.0"/>
                     </font>
                 </TextField>
                 <Button fx:id="buttonStartStopTimer" mnemonicParsing="false" onAction="#startStopTimer"
-                        prefHeight="38.0"
-                        prefWidth="240.0" text="%mainWindow.button.startStopTimer" textAlignment="CENTER">
+                        prefHeight="38.0" prefWidth="240.0" text="%mainWindow.button.startStopTimer"
+                        textAlignment="CENTER">
                     <font>
                         <Font size="18.0"/>
                     </font>
