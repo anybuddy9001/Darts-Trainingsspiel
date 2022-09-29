@@ -63,6 +63,13 @@ public class LauncherController implements Initializable {
         }
     }
 
+    public void showLogWindow(Stage window) {
+        logWindow.setX(window.getX() + window.getWidth());
+        logWindow.setY(window.getY());
+        logWindow.show();
+        window.requestFocus();
+    }
+
     @FXML
     public void startChallengeMode() {
         LogController.println("Challenge Mode is not yet implemented"); //NON-NLS
@@ -82,10 +89,7 @@ public class LauncherController implements Initializable {
             window.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("gameWindow.Title"));
             window.setScene(scene);
             window.setResizable(false);
-            window.setOnCloseRequest(event -> Platform.exit());
-            logWindow.setX(window.getX() + window.getWidth());
-            logWindow.setY(window.getY());
-            logWindow.show();
+            showLogWindow(window);
         } catch (IOException e) {
             LogController.println(resourceBundle.getString("fError.launcherWindow.startGame"));
             throw new RuntimeException(e);
