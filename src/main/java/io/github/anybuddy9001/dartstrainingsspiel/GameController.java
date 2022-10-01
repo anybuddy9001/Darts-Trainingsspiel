@@ -159,7 +159,6 @@ public class GameController implements Initializable {
         game.stopTimer();
         timerIsRunning = false;
         game = new Game(this);
-        statusDisplay.clear();
         statusDisplay.setText(resourceBundle.getString("mainWindow.textField.status.init"));
         this.updateScore();
         lock(false);
