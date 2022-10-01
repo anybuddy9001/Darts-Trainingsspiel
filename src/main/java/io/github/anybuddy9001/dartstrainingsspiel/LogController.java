@@ -27,10 +27,12 @@ public class LogController implements Initializable {
         staticLogOut = logOut;
     }
 
+    @FXML
     public void clearLogScreen() {
         logOut.clear();
     }
 
+    @FXML
     public void hideLog() {
         Stage window = (Stage) logOut.getScene().getWindow();
         window.hide();
