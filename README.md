@@ -3,7 +3,7 @@
 # **Darts Trainingsspiel**
 
 Dies ist ein Java-Projekt mit OpenJFX (Javafx)
-mit dem Sie Ihre Darts-Fähigkeiten mithilfe eines Punktesystems trainieren können.
+mit dem mithilfe eines Punktesystems Darts-Fähigkeiten trainiert werden können.
 
 Specktulatius hat das Spiel vor einiger Zeit für Michael gemacht. <br>
 Allerdings habe ich inzwischen fast alles überarbeitet,
@@ -28,7 +28,8 @@ sobald du bei 0 Punkten bist und keinen Treffer hast.
 
 ## Wie starte ich das Programm?
 
-Es wird eine OpenJFX-Runtime oder ein JDK, die sie (z.B. Azul-Zulu) beinhaltet benötigt. <br>
+Es wird eine OpenJFX-Runtime oder ein JDK, die sie beinhaltet benötigt. (z.B. Azul-Zulu)
+
 Die Vorgehensweise ist dann wie bei jedem anderen Java Programm,
 das als jar-Datei ausgeliefert wird.
 
@@ -36,23 +37,24 @@ das als jar-Datei ausgeliefert wird.
 
 ###### Option 1
 
-1. Doppelklicken Sie in Ihrem Datei-Explorer auf das heruntergeladene Jar-File (oder klicken Sie mit der rechten
-   Maustaste-> "Öffnen").
+1. Im Datei-Explorer doppelklick auf die heruntergeladene Jar-Datei (oder klick mit der rechten
+   Maustaste -> "Öffnen").
 2. Spaß haben
 
 ###### Option 2 (nicht empfohlen)
 
-1. Öffnen Sie PowerShell
-2. Navigieren Sie mit `cd` zu dem Ordner in dem die heruntergeladene Datei liegt <br>
-   (z. B. `cd C:/users/user/Downloads`)
-3. Führen Sie `java -jar DartStrainingsspiel-$Version.jar` aus <br>
+1. PowerShell öffnen
+2. Mithilfe von `cd` zu dem Ordner, in dem die heruntergeladene Datei liegt navigieren <br>
+   (z. B. `cd C:\users\user\Downloads`)
+3. Mit dem Kommando `java -jar Dartstrainingsspiel-$Version.jar` die Datei ausführen <br>
    (`$Version` durch die Versionsnummer der heruntergeladenen Datei ersetzen)
 
 ### Linux
 
-1. Navigieren Sie mit `cd` zu dem Ordner in dem die heruntergeladene Datei liegt <br>
-   (z. B. `cd C:/users/user/Downloads`)
-2. Führen Sie `java -jar DartStrainingsspiel-$Version.jar` aus <br>
+1. Terminal der Wahl öffnen
+2. Mithilfe von `cd` zu dem Ordner, in dem die heruntergeladene Datei liegt navigieren <br>
+   (z. B. `cd ~/Downloads`)
+3. Mit dem Kommando `java -jar Dartstrainingsspiel-$Version.jar` die Datei ausführen <br>
    (`$Version` durch die Versionsnummer der heruntergeladenen Datei ersetzen)
 
 ## Häufige Probleme
@@ -83,7 +85,7 @@ Zusätzlich verwende ich die [lombok](https://projectlombok.org/)-Bibliothek.
 
 ## **Darts Training Game**
 
-This is a Java project with openJFX (JavaFX) to help you train your Darts skills with a point reward system.
+This is a Java project with openJFX (JavaFX) to help train your Darts skills with a point reward system.
 
 Specktulatius made this for Michael some time ago. <br>
 I almost reworked everything, but he still remains an author in the Docs. :)
@@ -121,17 +123,17 @@ You can then just start is as you would any jar-file.
 ###### Option 2 (not recommended)
 
 1. Open Powershell
-2. Navigate to the folder you downloaded the file to with `cd`
-   <br> (e.g. `cd C:/users/user/Downloads`)
-3. Execute `java -jar DartsTrainingsspiel-$VERSION.jar`
-   <br> (replace `$VERSION` with the version number you downloaded)
+2. Navigate to the folder you downloaded the file to with `cd` <br>
+   (e.g. `cd C:\users\user\Downloads`)
+3. Execute `java -jar DartsTrainingsspiel-$VERSION.jar` <br>
+   (replace `$VERSION` with the version number of the game you downloaded)
 
 ### Linux
 
 1. Navigate to the folder you downloaded the file to with `cd` <br>
-   (e.g. `cd C:/users/user/Downloads`)
+   (e.g. `cd ~/Downloads`)
 2. Execute `java -jar DartsTrainingsspiel-$VERSION.jar` <br>
-   (replace `$VERSION` with the version number you downloaded)
+   (replace `$VERSION` with the version number of the game you downloaded)
 
 ## Common Issues
 
