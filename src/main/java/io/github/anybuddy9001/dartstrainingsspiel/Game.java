@@ -95,6 +95,9 @@ public class Game {
         switch (LauncherController.getGameType()) {
             case ENDLESS -> timeline = new Timeline(new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
                 second++;
+                if (second % 3600 == 0) {
+                    LogController.println("E: " + resourceBundle.getString("mError.mainWindow.timerOverflow")); //NON-NLS
+                }
                 mainController.updateTimer(String.format("%02d:%02d", (second % 3600) / 60, second % 60)); //NON-NLS
             }));
             case CHALLENGE -> timeline = new Timeline(new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
