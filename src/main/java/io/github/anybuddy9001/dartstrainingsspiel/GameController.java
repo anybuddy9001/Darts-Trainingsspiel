@@ -197,6 +197,13 @@ public class GameController implements Initializable {
         timerDisplay.setText(resourceBundle.getString("kw.timer") + " " + time);
     }
 
+    public void timerExpired() {
+        lock(true);
+        numberPrompt.close();
+        statusDisplay.setText(resourceBundle.getString("mainWindow.textField.status.gameOver"));
+        LogController.println("I: " + resourceBundle.getString("mainWindow.textField.status.gameOver")); //NON-NLS
+    }
+
     public void updateScore() {
         if (game.getScore() >= 0) {
             scoreDisplay.setText(resourceBundle.getString("kw.score") + ": " + game.getScore());

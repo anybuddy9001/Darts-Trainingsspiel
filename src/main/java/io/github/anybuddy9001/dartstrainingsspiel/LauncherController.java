@@ -29,7 +29,7 @@ public class LauncherController implements Initializable {
     private static Stage logWindow;
 
     @Getter
-    private static final int gameDuration = 0;
+    private static int gameDuration = 0;
     @Getter
     private static Game.Type gameType;
     @FXML
@@ -72,21 +72,33 @@ public class LauncherController implements Initializable {
 
     @FXML
     public void startChallengeMode() {
-        LogController.println("Challenge Mode is not yet implemented"); //NON-NLS
-        Stage window = (Stage) activeLanguage.getScene().getWindow();
-        logWindow.setX(window.getX() + window.getWidth());
-        logWindow.setY(window.getY());
-        logWindow.show();
+        gameType = Game.Type.CHALLENGE;
+        try {
+            if (durationIn.getText().isBlank()) {
+                gameDuration = 600;
+            } else {
+                gameDuration = Integer.parseInt(durationIn.getText()) * 60;
+                if (gameDuration < 1 || gameDuration > 3600) throw new NumberFormatException();
+            }
+            startGame("challengeMode");
+        } catch (NumberFormatException e) {
+            showLogWindow((Stage) activeLanguage.getScene().getWindow());
+            LogController.println("E: " + resourceBundle.getString("sError.launcherWindow.duration")); //NON-NLS
+        }
     }
 
     @FXML
     public void startEndlessMode() {
         gameType = Game.Type.ENDLESS;
+        startGame("endlessMode");
+    }
+
+    private void startGame(String mode) {
         Stage window = (Stage) activeLanguage.getScene().getWindow();
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Game.fxml")), resourceBundle);
             Scene scene = new Scene(root);
-            window.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("gameWindow.Title"));
+            window.setTitle(resourceBundle.getString("projectName") + " - " + resourceBundle.getString("gameWindow.title." + mode));
             window.setScene(scene);
             window.setResizable(false);
             showLogWindow(window);

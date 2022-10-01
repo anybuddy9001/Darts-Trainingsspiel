@@ -31,7 +31,7 @@ public class Game {
 
     public Game(GameController mainController) {
         this.mainController = mainController;
-        mainController.updateTimer(String.format("%02d:%02d", (second % 3600) / 60, second % 60)); //NON-NLS
+        mainController.updateTimer(String.format("%02d:%02d", second / 60, second % 60)); //NON-NLS
         initializeTimer();
     }
 
@@ -92,17 +92,25 @@ public class Game {
     }
 
     private void initializeTimer() {
-        if (LauncherController.getGameType() == Type.ENDLESS) {
-            timeline = new Timeline(new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
+        switch (LauncherController.getGameType()) {
+            case ENDLESS -> timeline = new Timeline(new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
                 second++;
                 mainController.updateTimer(String.format("%02d:%02d", (second % 3600) / 60, second % 60)); //NON-NLS
             }));
-//            case CHALLENGE -> timeline = new Timeline(new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
-//                if (second-- > 0)
-//                    mainController.updateTimer(String.format("%02d:%02d", (second % 3600) / 60, second % 60)); //NON-NLS
-//            }));
+            case CHALLENGE -> timeline = new Timeline(new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
+                if (second-- > 0) {
+                    mainController.updateTimer(String.format("%02d:%02d", (second % 3600) / 60, second % 60)); //NON-NLS
+                } else {
+                    timerExpired();
+                }
+            }));
         }
         timeline.setCycleCount(Timeline.INDEFINITE);
+    }
+
+    private void timerExpired() {
+        this.stopTimer();
+        mainController.timerExpired();
     }
 
     public void startTimer() {

@@ -28,7 +28,7 @@
         </items>
     </MenuButton>
     <Button layoutX="295.0" layoutY="154.0" mnemonicParsing="false" onAction="#startChallengeMode" prefHeight="43.0"
-            prefWidth="283.0" text="%launcherWindow.button.challengeMode"/>
+            prefWidth="283.0" text="%gameWindow.title.challengeMode"/>
     <Text fill="WHITE" layoutX="303.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0"
           text="%launcherWindow.text.duration" textAlignment="RIGHT">
         <font>
@@ -45,7 +45,7 @@
         </font>
     </Text>
     <Button layoutX="295.0" layoutY="234.0" mnemonicParsing="false" onAction="#startEndlessMode" prefHeight="43.0"
-            prefWidth="283.0" text="%launcherWindow.button.endlessMode"/>
+            prefWidth="283.0" text="%gameWindow.title.endlessMode"/>
     <Button cancelButton="true" layoutX="518.0" layoutY="306.0" mnemonicParsing="false" onAction="#quit" text="Quit"/>
     <Text fill="WHITE" layoutX="465.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%version"
           textAlignment="RIGHT" wrappingWidth="135.099609375">
