@@ -78,6 +78,15 @@ public class LauncherController implements Initializable {
     @FXML
     public void startChallengeMode() {
         gameType = Game.Type.CHALLENGE;
+        if (setGameDuration()) {
+            startGame();
+        }
+    }
+
+    /**
+     * @return duration set successful
+     */
+    private boolean setGameDuration() {
         try {
             if (durationIn.getText().isBlank()) {
                 gameDuration = 600;
@@ -85,25 +94,26 @@ public class LauncherController implements Initializable {
                 gameDuration = Integer.parseInt(durationIn.getText()) * 60;
                 if (gameDuration < 1 || gameDuration > 3600) throw new NumberFormatException();
             }
-            startGame("challengeMode");
+            return true;
         } catch (NumberFormatException e) {
             showLogWindow((Stage) activeLanguage.getScene().getWindow());
             LogController.println("E: " + resourceBundle.getString("sError.launcherWindow.duration")); //NON-NLS
+            return false;
         }
     }
 
     @FXML
     public void startEndlessMode() {
         gameType = Game.Type.ENDLESS;
-        startGame("endlessMode");
+        startGame();
     }
 
-    private void startGame(String mode) {
+    private void startGame() {
         Stage window = (Stage) activeLanguage.getScene().getWindow();
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Game.fxml")), resourceBundle);
             Scene scene = new Scene(root);
-            window.setTitle(resourceBundle.getString("projectName") + " - " + resourceBundle.getString("gameWindow.title." + mode));
+            window.setTitle(resourceBundle.getString("projectName") + " - " + resourceBundle.getString("gameWindow.title." + gameType.toString().toLowerCase()));
             window.setScene(scene);
             window.setResizable(false);
             showLogWindow(window);

@@ -28,7 +28,7 @@
         </items>
     </MenuButton>
     <Button layoutX="295.0" layoutY="154.0" mnemonicParsing="false" onAction="#startChallengeMode" prefHeight="43.0"
-            prefWidth="283.0" text="%gameWindow.title.challengeMode"/>
+            prefWidth="283.0" text="%gameWindow.title.challenge"/>
     <Text fill="WHITE" layoutX="303.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0"
           text="%launcherWindow.text.duration" textAlignment="RIGHT">
         <font>
@@ -36,8 +36,9 @@
         </font>
     </Text>
     <TextField fx:id="durationIn" alignment="CENTER" layoutX="389.0" layoutY="207.0" maxHeight="-Infinity"
-               maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefColumnCount="1" prefHeight="20.0"
-               prefWidth="45.0" promptText="10"/>
+               maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#startChallengeMode"
+               prefColumnCount="1"
+               prefHeight="20.0" prefWidth="45.0" promptText="10"/>
     <Text fill="WHITE" layoutX="440.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="min"
           wrappingWidth="38.7294921875">
         <font>
@@ -45,7 +46,7 @@
         </font>
     </Text>
     <Button layoutX="295.0" layoutY="234.0" mnemonicParsing="false" onAction="#startEndlessMode" prefHeight="43.0"
-            prefWidth="283.0" text="%gameWindow.title.endlessMode"/>
+            prefWidth="283.0" text="%gameWindow.title.endless"/>
     <Button cancelButton="true" layoutX="518.0" layoutY="306.0" mnemonicParsing="false" onAction="#quit" text="Quit"/>
     <Text fill="WHITE" layoutX="465.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%version"
           textAlignment="RIGHT" wrappingWidth="135.099609375">
