@@ -124,6 +124,7 @@ public class GameController implements Initializable {
      * @param number amount of hits
      */
     public void openNumberPrompt(int number) {
+        game.setNumCache(number);
         numberPrompt.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("numberPromptWindow.Title") + " (" + number + ")");
         numberPrompt.show();
     }
@@ -135,19 +136,16 @@ public class GameController implements Initializable {
 
     @FXML
     public void oneHit() {
-        game.setNumCache(1);
         this.openNumberPrompt(1);
     }
 
     @FXML
     public void twoHits() {
-        game.setNumCache(2);
         this.openNumberPrompt(2);
     }
 
     @FXML
     public void threeHits() {
-        game.setNumCache(3);
         this.openNumberPrompt(3);
     }
 
