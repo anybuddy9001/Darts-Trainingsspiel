@@ -111,6 +111,7 @@ public class GameController implements Initializable {
             if (success) {
                 window.close();
                 numberPromptIn.clear();
+                numberPromptErrOut.clear();
                 game.setNumCache(-1);
             } else {
                 throw new NumberFormatException("Number not in range");
