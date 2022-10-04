@@ -201,7 +201,7 @@ public class GameController implements Initializable {
     /**
      * Called by game if the timer hit zero
      */
-    public void timerExpired() {
+    public void gameOver() {
         lock(true);
         numberPrompt.close();
         statusDisplay.setText(resourceBundle.getString("mainWindow.textField.status.gameOver"));
@@ -216,17 +216,9 @@ public class GameController implements Initializable {
     }
 
     public void updateScore() {
-        if (game.getScore() >= 0) {
-            scoreDisplay.setText(resourceBundle.getString("kw.score") + ": " + game.getScore());
-            highscoreDisplay.setText(resourceBundle.getString("kw.highscore") + ": " + game.getHighscore());
-        } else {
-            this.startStopTimer();
-            statusDisplay.setText(resourceBundle.getString("mainWindow.textField.status.gameOver"));
-            LogController.println("I: " + resourceBundle.getString("mainWindow.textField.status.gameOver")); //NON-NLS
-            lock(true);
-        }
+        scoreDisplay.setText(resourceBundle.getString("kw.score") + ": " + game.getScore());
+        highscoreDisplay.setText(resourceBundle.getString("kw.highscore") + ": " + game.getHighscore());
     }
-
 
     /**
      * Disables all game functionality buttons

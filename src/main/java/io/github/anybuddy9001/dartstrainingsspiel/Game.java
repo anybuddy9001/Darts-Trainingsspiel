@@ -116,12 +116,16 @@ public class Game {
      * Instructs the controller to update the score displays.
      */
     private void updateScore() {
-        if (highscore < score) {
-            highscore = score;
-//             LogController.println(resourceBundle.getString("kw.highscore") + ": " + highscore);
+        if (score < 0) {
+            this.gameOver();
+        } else {
+            if (highscore < score) {
+                highscore = score;
+//                LogController.println(resourceBundle.getString("kw.highscore") + ": " + highscore);
+            }
+            LogController.println(resourceBundle.getString("kw.score") + ": " + score);
+            mainController.updateScore();
         }
-        LogController.println(resourceBundle.getString("kw.score") + ": " + score);
-        mainController.updateScore();
     }
 
     private void initializeTimer() {
@@ -137,16 +141,16 @@ public class Game {
                 if (second-- > 0) {
                     mainController.updateTimer(String.format("%02d:%02d", (second % 3600) / 60, second % 60)); //NON-NLS
                 } else {
-                    timerExpired();
+                    gameOver();
                 }
             }));
         }
         timeline.setCycleCount(Timeline.INDEFINITE);
     }
 
-    private void timerExpired() {
+    private void gameOver() {
         this.stopTimer();
-        mainController.timerExpired();
+        mainController.gameOver();
     }
 
     public void startTimer() {
