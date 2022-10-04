@@ -35,17 +35,19 @@ public class Game {
         initializeTimer();
     }
 
-    public void keinTreffer() {
-        score--;
-        this.updateScore();
-    }
-
-    public boolean handleNumberPromptOutput(int triples) {
+    /**
+     * Called by the game controller if an input was made to a number prompt.
+     * Responsible for checking if the value is in range.
+     *
+     * @param triples amount of triple hits inserted into number prompt
+     * @return number prompt should be closed
+     */
+    public boolean handleNumberPromptInput(int triples) {
         if (triples <= numCache && triples >= 0) {
             switch (numCache) {
-                case 1 -> this.einTreffer(triples);
-                case 2 -> this.ZweiTreffer(triples);
-                case 3 -> this.DreiTreffer(triples);
+                case 1 -> this.noHit(triples);
+                case 2 -> this.twoHits(triples);
+                case 3 -> this.threeHits(triples);
             }
             this.setNumCache(-1);
             return true;
@@ -54,7 +56,12 @@ public class Game {
         }
     }
 
-    public void einTreffer(int Triple) {
+    /**
+     * Called if one dart hit inside the ring.
+     *
+     * @param Triple amount of triple hits
+     */
+    public void noHit(int Triple) {
         switch (Triple) {
             case 0 -> {
             }
@@ -63,7 +70,12 @@ public class Game {
         this.updateScore();
     }
 
-    public void ZweiTreffer(int Triple) {
+    /**
+     * Called if two darts hit inside the ring.
+     *
+     * @param Triple amount of triple hits
+     */
+    public void twoHits(int Triple) {
         switch (Triple) {
             case 0 -> score++;
             case 1 -> score += 2;
@@ -72,7 +84,12 @@ public class Game {
         this.updateScore();
     }
 
-    public void DreiTreffer(int Triple) {
+    /**
+     * Called if three darts hit inside the ring.
+     *
+     * @param Triple amount of triple hits
+     */
+    public void threeHits(int Triple) {
         switch (Triple) {
             case 0 -> score += 2;
             case 1 -> score += 3;
@@ -82,6 +99,19 @@ public class Game {
         this.updateScore();
     }
 
+    /**
+     * Called if no dart hit inside the ring.
+     */
+    public void noHit() {
+        score--;
+        this.updateScore();
+    }
+
+    /**
+     * Sets new highscore value if needed.
+     * Print scores to Log.
+     * Instructs the controller to update the score displays.
+     */
     private void updateScore() {
         if (highscore < score) {
             highscore = score;

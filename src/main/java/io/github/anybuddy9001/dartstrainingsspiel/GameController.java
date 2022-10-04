@@ -75,6 +75,9 @@ public class GameController implements Initializable {
         }
     }
 
+    /**
+     * Prepares the number prompt window and stores it for later use.
+     */
     private void createNumberPrompt() {
         try {
             numberPrompt = new Stage();
@@ -94,49 +97,58 @@ public class GameController implements Initializable {
         }
     }
 
+    /**
+     * Called if the user made an input to the number prompt.
+     * Tries to parse an integer from the input and hands it to game.
+     * On success it will close the number prompt.
+     * On failure a message will be shown inside the number prompt.
+     */
+    @FXML
+    public void handleNumberPromptInput() {
+        Stage window = (Stage) numberPromptCloseButton.getScene().getWindow();
+        try {
+            boolean success = game.handleNumberPromptInput(Integer.parseInt(numberPromptIn.getText()));
+            if (success) {
+                window.close();
+                numberPromptIn.clear();
+                game.setNumCache(-1);
+            } else {
+                throw new NumberFormatException("Number not in range");
+            }
+        } catch (NumberFormatException e) {
+            numberPromptErrOut.setText(resourceBundle.getString("sError.numberPrompt.amount"));
+        }
+    }
+
+    /**
+     * @param number amount of hits
+     */
     public void openNumberPrompt(int number) {
         numberPrompt.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("numberPromptWindow.Title") + " (" + number + ")");
         numberPrompt.show();
     }
 
     @FXML
-    public void keinTreffer() {
-        game.keinTreffer();
+    public void noHit() {
+        game.noHit();
     }
 
     @FXML
-    public void einTreffer() {
+    public void oneHit() {
         game.setNumCache(1);
         this.openNumberPrompt(1);
     }
 
     @FXML
-    public void zweiTreffer() {
+    public void twoHits() {
         game.setNumCache(2);
         this.openNumberPrompt(2);
     }
 
     @FXML
-    public void dreiTreffer() {
+    public void threeHits() {
         game.setNumCache(3);
         this.openNumberPrompt(3);
-    }
-
-    @FXML
-    public void closeNumberPrompt() {
-        Stage window = (Stage) numberPromptCloseButton.getScene().getWindow();
-        try {
-            boolean success = game.handleNumberPromptOutput(Integer.parseInt(numberPromptIn.getText()));
-            if (success) {
-                window.close();
-                numberPromptIn.clear();
-                game.setNumCache(-1);
-            } else {
-                numberPromptErrOut.setText(resourceBundle.getString("sError.numberPrompt.amount"));
-            }
-        } catch (NumberFormatException e) {
-            numberPromptErrOut.setText(resourceBundle.getString("sError.numberPrompt.amount"));
-        }
     }
 
     @FXML
@@ -156,9 +168,9 @@ public class GameController implements Initializable {
     @FXML
     public void newGame() {
         LogController.println(resourceBundle.getString("stdOut.reset"));
-        game.stopTimer();
-        timerIsRunning = false;
+        game.stopTimer(); // Stop currents game timer to avoid clashing
         game = new Game(this);
+        timerIsRunning = false;
         statusDisplay.setText(resourceBundle.getString("mainWindow.textField.status.init"));
         this.updateScore();
         lock(false);
@@ -174,16 +186,16 @@ public class GameController implements Initializable {
     public void keyPressed(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
             case DIGIT0, NUMPAD0 -> {
-                if (!locked) this.keinTreffer();
+                if (!locked) this.noHit();
             }
             case DIGIT1, NUMPAD1 -> {
-                if (!locked) this.einTreffer();
+                if (!locked) this.oneHit();
             }
             case DIGIT2, NUMPAD2 -> {
-                if (!locked) this.zweiTreffer();
+                if (!locked) this.twoHits();
             }
             case DIGIT3, NUMPAD3 -> {
-                if (!locked) this.dreiTreffer();
+                if (!locked) this.threeHits();
             }
             case R, DECIMAL -> this.newGame();
             case Q -> Platform.exit();
@@ -192,15 +204,21 @@ public class GameController implements Initializable {
         }
     }
 
-    public void updateTimer(String time) {
-        timerDisplay.setText(resourceBundle.getString("kw.timer") + " " + time);
-    }
-
+    /**
+     * Called by game if the timer hit zero
+     */
     public void timerExpired() {
         lock(true);
         numberPrompt.close();
         statusDisplay.setText(resourceBundle.getString("mainWindow.textField.status.gameOver"));
         LogController.println("I: " + resourceBundle.getString("mainWindow.textField.status.gameOver")); //NON-NLS
+    }
+
+    /**
+     * @param time to be displayed
+     */
+    public void updateTimer(String time) {
+        timerDisplay.setText(resourceBundle.getString("kw.timer") + " " + time);
     }
 
     public void updateScore() {
@@ -215,6 +233,12 @@ public class GameController implements Initializable {
         }
     }
 
+
+    /**
+     * Disables all game functionality buttons
+     *
+     * @param gameOver whether the timer should be disabled
+     */
     private void lock(boolean gameOver) {
         locked = true;
 
@@ -227,6 +251,9 @@ public class GameController implements Initializable {
         buttonThreeHits.setDisable(true);
     }
 
+    /**
+     * Enables all game functionality buttons
+     */
     private void unlock() {
         locked = false;
 

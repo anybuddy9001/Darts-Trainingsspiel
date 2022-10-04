@@ -63,6 +63,11 @@ public class LauncherController implements Initializable {
         }
     }
 
+    /**
+     * Opens log window in relation to the window it was given.
+     *
+     * @param window to open relative to
+     */
     public void showLogWindow(Stage window) {
         logWindow.setX(window.getX() + window.getWidth());
         logWindow.setY(window.getY());
@@ -109,23 +114,23 @@ public class LauncherController implements Initializable {
     }
 
     @FXML
-    public void quit() {
-        Platform.exit();
-    }
-
-    @FXML
     public void setLanguageGerman() {
         Locale locale = new Locale("de"); //NON-NLS
-        this.reset(locale);
+        this.setLocale(locale);
     }
 
     @FXML
     public void setLanguageEnglish() {
         Locale locale = new Locale("en"); //NON-NLS
-        this.reset(locale);
+        this.setLocale(locale);
     }
 
-    private void reset(Locale locale) {
+    /**
+     * Sets new locale and redraws the launcher window to represent locale change.
+     *
+     * @param locale to change to
+     */
+    private void setLocale(Locale locale) {
         resourceBundle = ResourceBundle.getBundle("lang", locale);
         Stage window = (Stage) activeLanguage.getScene().getWindow();
         try {
@@ -137,5 +142,10 @@ public class LauncherController implements Initializable {
             LogController.println(resourceBundle.getString("fError.launcherWindow.reset") + "\n" + e);
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    public void quit() {
+        Platform.exit();
     }
 }

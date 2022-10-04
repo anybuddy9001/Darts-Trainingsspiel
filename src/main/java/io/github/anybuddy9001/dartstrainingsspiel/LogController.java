@@ -17,9 +17,14 @@ public class LogController implements Initializable {
     @FXML
     private TextArea logOut;
 
-    public static void println(String s) {
-        staticLogOut.appendText(s + "\n");
-        System.out.println(s);
+    /**
+     * Prints given string to the log window and stdout
+     *
+     * @param msg to be printed
+     */
+    public static void println(String msg) {
+        staticLogOut.appendText(msg + "\n");
+        System.out.println(msg);
     }
 
     @Override

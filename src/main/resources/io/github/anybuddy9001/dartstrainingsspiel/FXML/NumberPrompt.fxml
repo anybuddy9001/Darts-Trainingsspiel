@@ -10,8 +10,9 @@
             fx:controller="io.github.anybuddy9001.dartstrainingsspiel.GameController">
     <Button fx:id="numberPromptCloseButton" focusTraversable="false" layoutX="293.0" layoutY="205.0"
             mnemonicParsing="false"
-            onAction="#closeNumberPrompt" prefHeight="53.0" prefWidth="65.0" text="Ok"/>
-    <TextField fx:id="numberPromptIn" alignment="CENTER" layoutX="91.0" layoutY="113.0" onAction="#closeNumberPrompt"
+            onAction="#handleNumberPromptInput" prefHeight="53.0" prefWidth="65.0" text="Ok"/>
+    <TextField fx:id="numberPromptIn" alignment="CENTER" layoutX="91.0" layoutY="113.0"
+               onAction="#handleNumberPromptInput"
                prefHeight="152.0" prefWidth="190.0">
         <font>
             <Font size="71.0"/>

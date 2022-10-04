@@ -29,13 +29,13 @@
                         <Font size="28.0"/>
                     </font>
                 </Text>
-                <Button fx:id="buttonNoHit" mnemonicParsing="false" onAction="#keinTreffer" prefHeight="50.0"
+                <Button fx:id="buttonNoHit" mnemonicParsing="false" onAction="#noHit" prefHeight="50.0"
                         prefWidth="240.0" text="%mainWindow.button.noHit" textAlignment="CENTER"/>
-                <Button fx:id="buttonOneHit" mnemonicParsing="false" onAction="#einTreffer" prefHeight="50.0"
+                <Button fx:id="buttonOneHit" mnemonicParsing="false" onAction="#oneHit" prefHeight="50.0"
                         prefWidth="240.0" text="%mainWindow.button.oneHit"/>
-                <Button fx:id="buttonTwoHits" mnemonicParsing="false" onAction="#zweiTreffer" prefHeight="50.0"
+                <Button fx:id="buttonTwoHits" mnemonicParsing="false" onAction="#twoHits" prefHeight="50.0"
                         prefWidth="240.0" text="%mainWindow.button.twoHits"/>
-                <Button fx:id="buttonThreeHits" mnemonicParsing="false" onAction="#dreiTreffer" prefHeight="50.0"
+                <Button fx:id="buttonThreeHits" mnemonicParsing="false" onAction="#threeHits" prefHeight="50.0"
                         prefWidth="240.0" text="%mainWindow.button.threeHits"/>
             </VBox>
             <VBox alignment="CENTER" fillWidth="false" spacing="11.0" GridPane.columnIndex="1">
