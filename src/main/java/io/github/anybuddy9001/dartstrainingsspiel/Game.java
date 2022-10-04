@@ -39,21 +39,24 @@ public class Game {
      * Called by the game controller if an input was made to a number prompt.
      * Responsible for checking if the value is in range.
      *
-     * @param triples amount of triple hits inserted into number prompt
+     * @param in amount of triple hits inserted into number prompt
      * @return number prompt should be closed
      */
-    public boolean handleNumberPromptInput(int triples) {
-        if (triples <= numCache && triples >= 0) {
-            switch (numCache) {
-                case 1 -> this.noHit(triples);
-                case 2 -> this.twoHits(triples);
-                case 3 -> this.threeHits(triples);
+    public boolean handleNumberPromptInput(String in) {
+        try {
+            int triples = Integer.parseInt(in);
+            if (triples <= numCache && triples >= 0) {
+                switch (numCache) {
+                    case 1 -> this.noHit(triples);
+                    case 2 -> this.twoHits(triples);
+                    case 3 -> this.threeHits(triples);
+                }
+                this.setNumCache(-1);
+                return true;
             }
-            this.setNumCache(-1);
-            return true;
-        } else {
-            return false;
+        } catch (NumberFormatException ignored) {
         }
+        return false;
     }
 
     /**

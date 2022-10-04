@@ -106,17 +106,12 @@ public class GameController implements Initializable {
     @FXML
     public void handleNumberPromptInput() {
         Stage window = (Stage) numberPromptCloseButton.getScene().getWindow();
-        try {
-            boolean success = game.handleNumberPromptInput(Integer.parseInt(numberPromptIn.getText()));
-            if (success) {
-                window.close();
-                numberPromptIn.clear();
-                numberPromptErrOut.clear();
-                game.setNumCache(-1);
-            } else {
-                throw new NumberFormatException("Number not in range");
-            }
-        } catch (NumberFormatException e) {
+        if (game.handleNumberPromptInput(numberPromptIn.getText())) {
+            window.close();
+            numberPromptIn.clear();
+            numberPromptErrOut.clear();
+            game.setNumCache(-1);
+        } else {
             numberPromptErrOut.setText(resourceBundle.getString("sError.numberPrompt.amount"));
         }
     }
