@@ -1,5 +1,6 @@
 # Folders
-/out
+/.idea/libraries/
+/out/
 
 # Files
 /ToDo.txt
