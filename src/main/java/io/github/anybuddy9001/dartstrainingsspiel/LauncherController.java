@@ -89,7 +89,7 @@ public class LauncherController implements Initializable {
     private boolean setGameDuration() {
         try {
             if (durationIn.getText().isBlank()) {
-                gameDuration = 600;
+                gameDuration = JSONInterface.getDefaultGameDuration();
             } else {
                 gameDuration = Integer.parseInt(durationIn.getText()) * 60;
                 if (gameDuration < 1 || gameDuration > 3600) throw new NumberFormatException();
@@ -116,7 +116,9 @@ public class LauncherController implements Initializable {
             window.setTitle(resourceBundle.getString("projectName") + " - " + resourceBundle.getString("gameWindow.title." + gameType.toString().toLowerCase()));
             window.setScene(scene);
             window.setResizable(false);
-            showLogWindow(window);
+            if (JSONInterface.getDoOpenLog()) {
+                showLogWindow(window);
+            }
         } catch (IOException e) {
             LogController.println(resourceBundle.getString("fError.launcherWindow.startGame"));
             throw new RuntimeException(e);

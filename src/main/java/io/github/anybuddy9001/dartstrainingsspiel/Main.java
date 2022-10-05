@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -19,7 +20,12 @@ public class Main extends Application {
     private static ResourceBundle resourceBundle;
 
     public static void main(String[] args) {
-        resourceBundle = ResourceBundle.getBundle("lang");  //NON-NLS
+        Locale locale = JSONInterface.getCustomLanguage();
+        if (locale == null) {
+            resourceBundle = ResourceBundle.getBundle("lang");  //NON-NLS
+        } else {
+            resourceBundle = ResourceBundle.getBundle("lang", locale);  //NON-NLS
+        }
         launch(args);
     }
 

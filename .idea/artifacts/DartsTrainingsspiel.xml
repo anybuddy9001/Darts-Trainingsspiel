@@ -3,6 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/DartsTrainingsspiel</output-path>
     <root id="archive" name="DartsTrainingsspiel.jar">
       <element id="module-output" name="Darts Trainingsspiel" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../common-libraries/json-20220924.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
