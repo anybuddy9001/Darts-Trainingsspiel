@@ -148,13 +148,13 @@ public class LauncherController implements Initializable {
     }
 
     @FXML
-    public void setLanguageGerman() {
+    private void setLanguageGerman() {
         Locale locale = new Locale("de"); //NON-NLS
         this.setLocale(locale);
     }
 
     @FXML
-    public void setLanguageEnglish() {
+    private void setLanguageEnglish() {
         Locale locale = new Locale("en"); //NON-NLS
         this.setLocale(locale);
     }
@@ -164,7 +164,7 @@ public class LauncherController implements Initializable {
      *
      * @param locale to change to
      */
-    private void setLocale(Locale locale) {
+    public void setLocale(Locale locale) {
         resourceBundle = ResourceBundle.getBundle("lang", locale == null ? Locale.getDefault() : locale);
         Stage window = (Stage) activeLanguage.getScene().getWindow();
         try {
