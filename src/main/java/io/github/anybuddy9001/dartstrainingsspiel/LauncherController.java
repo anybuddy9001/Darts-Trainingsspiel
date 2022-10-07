@@ -44,7 +44,7 @@ public class LauncherController implements Initializable {
         launcherController = this;
         switch (resources.getLocale().toString()) {
             case "en" -> activeLanguage.setText("English"); //NON-NLS
-            case "de" -> activeLanguage.setText("German"); //NON-NLS
+            case "de" -> activeLanguage.setText("Deutsch"); //NON-NLS
         }
         setDurationInPromptToDefault();
         if (logWindow == null) {
