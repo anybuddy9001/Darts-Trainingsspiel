@@ -18,14 +18,16 @@ public class JSONInterface {
         settings = new JSONObject();
         settings.put("Version", ResourceBundle.getBundle("lang").getString("version")); //NON-NLS
         settings.put("OpenLog", true);
-        settings.put("IsCustomLanguageSet", false);
         settings.put("CustomLanguage", JSONObject.NULL);
-        settings.put("DefaultGameDuration", 600);
+        settings.put("DefaultGameDuration", 10);
 
-        // Write to file
+        saveSettings();
+    }
+
+    public static void saveSettings() {
         try {
             FileWriter fileWriter = new FileWriter("settings.json");
-            fileWriter.write(settings.toString(4));
+            fileWriter.write(settings.toString(2));
             fileWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -54,11 +56,23 @@ public class JSONInterface {
         return new Locale(obj.toString());
     }
 
+    public static void setCustomLanguage(Locale locale) {
+        settings.put("CustomLanguage", locale == null ? JSONObject.NULL : locale);
+    }
+
     public static boolean getDoOpenLog() {
         return settings.getBoolean("OpenLog");
     }
 
+    public static void setDoOpenLog(boolean bool) {
+        settings.put("OpenLog", bool);
+    }
+
     public static int getDefaultGameDuration() {
         return settings.getInt("DefaultGameDuration");
+    }
+
+    public static void setDefaultGameDuration(int duration) {
+        settings.put("DefaultGameDuration", duration);
     }
 }

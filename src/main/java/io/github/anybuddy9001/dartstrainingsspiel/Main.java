@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -17,6 +18,8 @@ import java.util.ResourceBundle;
  */
 public class Main extends Application {
     private static ResourceBundle resourceBundle;
+    @Getter
+    private static Stage primaryStage;
 
     public static void main(String[] args) {
         Locale locale = JSONInterface.getCustomLanguage();
@@ -34,6 +37,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        Main.primaryStage = primaryStage;
         Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Launcher.fxml")), resourceBundle));
         primaryStage.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("launcherWindow.Title"));
         primaryStage.setScene(scene);

@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Getter;
 
@@ -25,8 +26,9 @@ public class LauncherController implements Initializable {
     @Getter
     private static ResourceBundle resourceBundle;
     @Getter
+    private static LauncherController launcherController;
+    private static Stage settingsWindow;
     private static Stage logWindow;
-
     @Getter
     private static int gameDuration = 0;
     @Getter
@@ -39,22 +41,57 @@ public class LauncherController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         resourceBundle = resources;
+        launcherController = this;
         switch (resources.getLocale().toString()) {
             case "en" -> activeLanguage.setText("English"); //NON-NLS
             case "de" -> activeLanguage.setText("German"); //NON-NLS
         }
+        setDurationInPromptToDefault();
         if (logWindow == null) {
             createNewLogWindow();
         }
+        if (settingsWindow == null) {
+            createNewSettingsWindow();
+        }
+    }
+
+    /**
+     * Sets the TextField prompt of durationIn to the default from settings file
+     */
+    public void setDurationInPromptToDefault() {
+        durationIn.setPromptText(String.valueOf(JSONInterface.getDefaultGameDuration()));
+    }
+
+    private void createNewSettingsWindow() {
+        if (settingsWindow == null) {
+            settingsWindow = new Stage();
+            settingsWindow.initModality(Modality.APPLICATION_MODAL);
+            settingsWindow.setResizable(false);
+        }
+        try {
+            Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Settings.fxml")), resourceBundle));
+            settingsWindow.setTitle(resourceBundle.getString("projectName") + " - " + resourceBundle.getString("settingsWindow.title"));
+            settingsWindow.setScene(scene);
+        } catch (IOException e) {
+            System.out.println(resourceBundle.getString("fError.numberPrompt.open") + "\n" + e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void openSettings() {
+        settingsWindow.show();
     }
 
     private void createNewLogWindow() {
-        logWindow = new Stage();
+        if (logWindow == null) {
+            logWindow = new Stage();
+            logWindow.setResizable(true);
+        }
         try {
             Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Log.fxml")), resourceBundle));
             logWindow.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("logWindow.Title"));
             logWindow.setScene(scene);
-            logWindow.setResizable(true);
         } catch (IOException e) {
             LogController.println(resourceBundle.getString("fError.log.open") + "\n" + e);
             throw new RuntimeException(e);
@@ -75,7 +112,7 @@ public class LauncherController implements Initializable {
     private boolean setGameDuration() {
         try {
             if (durationIn.getText().isBlank()) {
-                gameDuration = JSONInterface.getDefaultGameDuration();
+                gameDuration = JSONInterface.getDefaultGameDuration() * 60;
             } else {
                 gameDuration = Integer.parseInt(durationIn.getText()) * 60;
                 if (gameDuration < 1 || gameDuration > 3600) throw new NumberFormatException();
@@ -128,13 +165,14 @@ public class LauncherController implements Initializable {
      * @param locale to change to
      */
     private void setLocale(Locale locale) {
-        resourceBundle = ResourceBundle.getBundle("lang", locale);
+        resourceBundle = ResourceBundle.getBundle("lang", locale == null ? Locale.getDefault() : locale);
         Stage window = (Stage) activeLanguage.getScene().getWindow();
         try {
-            Scene newScene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Launcher.fxml")), resourceBundle));
-            window.setScene(newScene);
             logWindow.close();
             createNewLogWindow();
+            createNewSettingsWindow();
+            Scene newScene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Launcher.fxml")), resourceBundle));
+            window.setScene(newScene);
         } catch (IOException e) {
             LogController.println(resourceBundle.getString("fError.launcherWindow.reset") + "\n" + e);
             throw new RuntimeException(e);
