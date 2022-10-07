@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
  * @author anybuddy
  */
 public class LogController implements Initializable {
+    private static Stage logWindow;
     private static TextArea staticLogOut;
 
     @FXML
@@ -25,6 +26,16 @@ public class LogController implements Initializable {
     public static void println(String msg) {
         staticLogOut.appendText(msg + "\n");
         System.out.println(msg);
+    }
+
+    public static void showLog(Stage window) {
+        if (logWindow == null) {
+            logWindow = (Stage) staticLogOut.getScene().getWindow();
+        }
+        logWindow.setX(window.getX() + window.getWidth());
+        logWindow.setY(window.getY());
+        logWindow.show();
+        window.requestFocus();
     }
 
     @Override

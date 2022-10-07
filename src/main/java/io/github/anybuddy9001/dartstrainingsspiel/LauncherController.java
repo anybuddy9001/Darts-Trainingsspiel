@@ -61,18 +61,6 @@ public class LauncherController implements Initializable {
         }
     }
 
-    /**
-     * Opens log window in relation to the window it was given.
-     *
-     * @param window to open relative to
-     */
-    public void showLogWindow(Stage window) {
-        logWindow.setX(window.getX() + window.getWidth());
-        logWindow.setY(window.getY());
-        logWindow.show();
-        window.requestFocus();
-    }
-
     @FXML
     public void startChallengeMode() {
         gameType = Game.Type.CHALLENGE;
@@ -94,8 +82,8 @@ public class LauncherController implements Initializable {
             }
             return true;
         } catch (NumberFormatException e) {
-            showLogWindow((Stage) activeLanguage.getScene().getWindow());
-            LogController.println("E: " + resourceBundle.getString("sError.launcherWindow.duration")); //NON-NLS
+            LogController.showLog((Stage) activeLanguage.getScene().getWindow());
+            LogController.println("E: " + resourceBundle.getString("sError.duration")); //NON-NLS
             return false;
         }
     }
@@ -114,7 +102,7 @@ public class LauncherController implements Initializable {
             window.setScene(scene);
             window.setResizable(false);
             if (JSONInterface.getDoOpenLog()) {
-                showLogWindow(window);
+                LogController.showLog(window);
             }
         } catch (IOException e) {
             LogController.println(resourceBundle.getString("fError.launcherWindow.startGame"));
