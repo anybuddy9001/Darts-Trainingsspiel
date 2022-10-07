@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -52,8 +51,7 @@ public class LauncherController implements Initializable {
     private void createNewLogWindow() {
         logWindow = new Stage();
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Log.fxml")), resourceBundle);
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Log.fxml")), resourceBundle));
             logWindow.setTitle(resourceBundle.getString("projectName") + resourceBundle.getString("logWindow.Title"));
             logWindow.setScene(scene);
             logWindow.setResizable(true);
@@ -111,8 +109,7 @@ public class LauncherController implements Initializable {
     private void startGame() {
         Stage window = (Stage) activeLanguage.getScene().getWindow();
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Game.fxml")), resourceBundle);
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FXML/Game.fxml")), resourceBundle));
             window.setTitle(resourceBundle.getString("projectName") + " - " + resourceBundle.getString("gameWindow.title." + gameType.toString().toLowerCase()));
             window.setScene(scene);
             window.setResizable(false);
