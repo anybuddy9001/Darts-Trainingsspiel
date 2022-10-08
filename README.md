@@ -28,7 +28,8 @@ sobald du bei 0 Punkten bist und keinen Treffer hast.
 
 ## Wie starte ich das Programm?
 
-Es wird eine OpenJFX-Runtime oder ein JDK, die sie beinhaltet benötigt. (z.B. Azul-Zulu)
+Es wird eine OpenJFX-Runtime oder ein JDK, die sie beinhaltet benötigt. (
+z.B. [Azul-Zulu](https://www.azul.com/downloads/?package=jdk-fx))
 
 Die Vorgehensweise ist dann wie bei jedem anderen Java Programm,
 das als jar-Datei ausgeliefert wird.
@@ -110,7 +111,8 @@ The game is lost when you are at 0 points and don't hit anything.
 
 ## How to run this Programm
 
-You will need an openJFX runtime or a JDK, which includes it (e.g. Azul-Zulu).
+You will need an openJFX runtime or a JDK, which includes it (
+e.g. [Azul-Zulu](https://www.azul.com/downloads/?package=jdk-fx)).
 
 You can then just start is as you would any jar-file.
 
