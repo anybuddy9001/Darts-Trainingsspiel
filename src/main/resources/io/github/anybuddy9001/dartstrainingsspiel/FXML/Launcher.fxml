@@ -6,7 +6,7 @@
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0"
             prefWidth="602.0"
             snapToPixel="false" styleClass="big-anchor" stylesheets="@application.css"
-            xmlns="http://javafx.com/javafx/18"
+            xmlns="http://javafx.com/javafx/19"
             fx:controller="io.github.anybuddy9001.dartstrainingsspiel.LauncherController">
     <Text fill="WHITE" layoutX="37.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0"
           text="%launcherWindow.text.title" textAlignment="CENTER" underline="true" wrappingWidth="527.40380859375">

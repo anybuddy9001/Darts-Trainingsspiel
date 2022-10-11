@@ -72,7 +72,7 @@ Installieren Sie ein JDK, das diese enthält (z.B. Azul-Zulu) und versuchen es e
 
 ## Entwicklung
 
-Ich benutze Intellij-Ultimate von JetBrains (für Studierende) mit dem Azul-Zulu JDK (18.0.2). <br>
+Ich benutze Intellij-Ultimate von JetBrains (für Studierende) mit dem Azul-Zulu JDK (19.0.0). <br>
 Zusätzlich verwende ich die [lombok](https://projectlombok.org/)- und [org.json](https://github.com/stleary/JSON-java)
 -Bibliothek.
 
@@ -152,7 +152,7 @@ Install and use one that does (e.g. Azul-Zulu) and try again. <br>
 
 ## Development
 
-I use IntelliJ-Ultimate by JetBrains (for Students) with the Azul-Zulu JDK (18.0.2). <br>
+I use IntelliJ-Ultimate by JetBrains (for Students) with the Azul-Zulu JDK (19.0.0). <br>
 Additionally I use the [lombok](https://projectlombok.org/) and [org.json](https://github.com/stleary/JSON-java)
 library.
 

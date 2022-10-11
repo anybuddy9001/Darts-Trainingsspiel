@@ -5,8 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" styleClass="big-anchor"
-            stylesheets="@application.css" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            minWidth="-Infinity"
+            prefHeight="300.0" prefWidth="400.0" styleClass="big-anchor" stylesheets="@application.css"
+            xmlns="http://javafx.com/javafx/19"
             fx:controller="io.github.anybuddy9001.dartstrainingsspiel.SettingsController">
     <HBox layoutX="28.0" layoutY="55.0" spacing="20.0">
         <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="175.0"
