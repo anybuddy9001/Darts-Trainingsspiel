@@ -1,62 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="356.0"
             prefWidth="602.0"
             snapToPixel="false" styleClass="big-anchor" stylesheets="@application.css"
             xmlns="http://javafx.com/javafx/19"
             fx:controller="io.github.anybuddy9001.dartstrainingsspiel.LauncherController">
-    <Text fill="WHITE" layoutX="37.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0"
-          text="%launcherWindow.text.title" textAlignment="CENTER" underline="true" wrappingWidth="527.40380859375">
+    <Text fill="WHITE" layoutX="37.0" layoutY="68.0" text="%launcherWindow.text.title" textAlignment="CENTER"
+          underline="true" wrappingWidth="527.40380859375">
         <font>
             <Font size="50.0"/>
         </font>
     </Text>
-    <Text fx:id="activeLanguage" fill="WHITE" layoutX="20.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0"
-          textAlignment="CENTER" wrappingWidth="158.7294921875">
-        <font>
-            <Font size="20.0"/>
-        </font>
-    </Text>
-    <MenuButton focusTraversable="false" layoutX="14.0" layoutY="318.0" mnemonicParsing="false" prefHeight="24.0"
-                prefWidth="170.0" text="%launcherWindow.text.languageSelection">
-        <items>
-            <MenuItem mnemonicParsing="false" onAction="#setLanguageGerman" text="Deutsch"/>
-            <MenuItem mnemonicParsing="false" onAction="#setLanguageEnglish" text="English"/>
-        </items>
-    </MenuButton>
     <Button layoutX="295.0" layoutY="154.0" mnemonicParsing="false" onAction="#startChallengeMode" prefHeight="43.0"
             prefWidth="283.0" text="%gameWindow.title.challenge"/>
-    <Text fill="WHITE" layoutX="303.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0"
-          text="%launcherWindow.text.duration" textAlignment="RIGHT">
-        <font>
-            <Font size="17.0"/>
-        </font>
-    </Text>
-    <TextField fx:id="durationIn" alignment="CENTER" layoutX="389.0" layoutY="207.0" maxHeight="-Infinity"
-               maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#startChallengeMode"
-               prefColumnCount="1" prefHeight="20.0" prefWidth="45.0" promptText="10"/>
-    <Text fill="WHITE" layoutX="440.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="min"
-          wrappingWidth="38.7294921875">
-        <font>
-            <Font size="15.0"/>
-        </font>
-    </Text>
+    <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="303.0" layoutY="204.0">
+        <Text fill="WHITE" text="%launcherWindow.text.duration" textAlignment="RIGHT">
+            <font>
+                <Font size="17.0"/>
+            </font>
+        </Text>
+        <TextField fx:id="durationIn" alignment="CENTER" onAction="#startChallengeMode" prefColumnCount="1"
+                   prefHeight="20.0" prefWidth="45.0" promptText="10">
+            <HBox.margin>
+                <Insets left="5.0" right="5.0"/>
+            </HBox.margin>
+        </TextField>
+        <Text fill="WHITE" text="min" wrappingWidth="38.7294921875">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Text>
+    </HBox>
     <Button layoutX="295.0" layoutY="234.0" mnemonicParsing="false" onAction="#startEndlessMode" prefHeight="43.0"
             prefWidth="283.0" text="%gameWindow.title.endless"/>
     <ButtonBar buttonMinWidth="0.0" layoutX="327.0" layoutY="306.0" prefHeight="24.0" prefWidth="245.0">
         <buttons>
             <Button mnemonicParsing="false" onAction="#openSettings" prefHeight="24.0"
-                    text="%launcherWindow.button.settings"
-                    textAlignment="CENTER"/>
+                    text="%settingsWindow.title" textAlignment="CENTER"/>
             <Button cancelButton="true" mnemonicParsing="false" onAction="#quit" prefHeight="24.0"
                     text="%launcherWindow.button.quit" textAlignment="CENTER"/>
         </buttons>
     </ButtonBar>
-    <Text fill="WHITE" layoutX="465.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%version"
-          textAlignment="RIGHT" wrappingWidth="135.099609375">
+    <Text fx:id="activeLanguage" fill="WHITE" layoutX="20.0" layoutY="308.0" textAlignment="CENTER"
+          wrappingWidth="158.7294921875">
+        <font>
+            <Font size="20.0"/>
+        </font>
+    </Text>
+    <MenuButton layoutX="14.0" layoutY="318.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="170.0"
+                text="%launcherWindow.text.languageSelection">
+        <items>
+            <MenuItem mnemonicParsing="false" onAction="#setLanguageGerman" text="Deutsch"/>
+            <MenuItem mnemonicParsing="false" onAction="#setLanguageEnglish" text="English"/>
+        </items>
+    </MenuButton>
+    <Text fill="WHITE" layoutX="465.0" layoutY="355.0" text="%version" textAlignment="RIGHT"
+          wrappingWidth="135.099609375">
         <font>
             <Font size="10.0"/>
         </font>
