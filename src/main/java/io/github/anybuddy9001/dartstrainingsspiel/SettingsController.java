@@ -24,6 +24,10 @@ public class SettingsController implements Initializable {
     @FXML
     private TextField durationIn;
     @FXML
+    private CheckBox gameOverChallenge;
+    @FXML
+    private CheckBox gameOverEndless;
+    @FXML
     private CheckBox showLogOnStartup;
 
     @Override
@@ -32,6 +36,8 @@ public class SettingsController implements Initializable {
         activeLocale = resources.getLocale();
         selectedLanguage.setText(Objects.equals(activeLocale, new Locale("de")) ? "Deutsch" : "English"); //NON-NLS
         durationIn.setPromptText(String.valueOf(JSONInterface.getDefaultGameDuration()));
+        gameOverEndless.setSelected(JSONInterface.getGameOverEndless());
+        gameOverChallenge.setSelected(JSONInterface.getGameOverChallenge());
         showLogOnStartup.setSelected(JSONInterface.getDoOpenLog());
     }
 
@@ -66,7 +72,9 @@ public class SettingsController implements Initializable {
     private void save() {
         // Save window so it can be closed for sure
         Stage window = (Stage) durationIn.getScene().getWindow();
-        // Save showLog check-box state
+        // Save check-box state
+        JSONInterface.setGameOverChallenge(gameOverChallenge.isSelected());
+        JSONInterface.setGameOverEndless(gameOverEndless.isSelected());
         JSONInterface.setDoOpenLog(showLogOnStartup.isSelected());
         // Check, save duration and update duration prompt
         if (!durationIn.getText().isBlank()) {

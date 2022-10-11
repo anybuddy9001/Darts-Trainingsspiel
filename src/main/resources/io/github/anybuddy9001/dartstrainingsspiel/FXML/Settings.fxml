@@ -1,68 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="300.0" prefWidth="400.0" styleClass="big-anchor" stylesheets="@application.css"
-            xmlns="http://javafx.com/javafx/19"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="300.0" prefWidth="400.0" styleClass="big-anchor"
+            stylesheets="@application.css" xmlns="http://javafx.com/javafx/19"
             fx:controller="io.github.anybuddy9001.dartstrainingsspiel.SettingsController">
-    <HBox layoutX="28.0" layoutY="55.0" spacing="20.0">
-        <MenuButton alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="175.0"
-                    text="%launcherWindow.text.languageSelection">
-            <items>
-                <MenuItem mnemonicParsing="false" onAction="#setLanguageGerman" text="Deutsch"/>
-                <MenuItem mnemonicParsing="false" onAction="#setLanguageEnglish" text="English"/>
-                <MenuItem mnemonicParsing="false" onAction="#setLanguageNone" text="%settingsWindow.menuButton.unset"/>
-            </items>
-            <font>
-                <Font size="14.0"/>
-            </font>
-        </MenuButton>
-        <Text fx:id="selectedLanguage" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER"
-              wrappingWidth="158.7294921875">
-            <font>
-                <Font size="25.0"/>
-            </font>
-        </Text>
-    </HBox>
-    <CheckBox fx:id="showLogOnStartup" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="60.0"
-              layoutY="187.0" mnemonicParsing="false" text="%settings.window.checkBox.showLog" textFill="WHITE">
-        <font>
-            <Font size="17.0"/>
-        </font>
-    </CheckBox>
-    <HBox layoutX="108.0" layoutY="125.0">
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="%launcherWindow.text.duration"
-              textAlignment="RIGHT">
-            <font>
-                <Font size="19.0"/>
-            </font>
-            <HBox.margin>
-                <Insets/>
-            </HBox.margin>
-        </Text>
-        <TextField fx:id="durationIn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-                   minHeight="-Infinity" minWidth="-Infinity" prefColumnCount="1" prefHeight="25.0" prefWidth="50.0"
-                   promptText="10">
-            <font>
-                <Font size="17.0"/>
-            </font>
-            <HBox.margin>
-                <Insets left="5.0" right="5.0"/>
-            </HBox.margin>
-        </TextField>
-        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="min">
-            <font>
-                <Font size="19.0"/>
-            </font>
-            <HBox.margin>
-                <Insets/>
-            </HBox.margin>
-        </Text>
-    </HBox>
     <ButtonBar buttonMinWidth="0.0" layoutX="180.0" layoutY="252.0" prefHeight="24.0" prefWidth="200.0">
         <buttons>
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#save"
@@ -71,4 +15,83 @@
                     text="%settingsWindow.button.close" textAlignment="CENTER"/>
         </buttons>
     </ButtonBar>
+    <VBox alignment="CENTER" fillWidth="false" prefHeight="261.0" prefWidth="400.0" spacing="15.0">
+        <VBox alignment="CENTER_LEFT" spacing="5.0">
+            <Text fill="WHITE" text="%settingsWindow.text.gameOverOnZero" underline="true">
+                <font>
+                    <Font size="21.0"/>
+                </font>
+            </Text>
+            <CheckBox fx:id="gameOverChallenge" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0"
+                      mnemonicParsing="false" text="%gameWindow.title.challenge" textFill="WHITE">
+                <font>
+                    <Font size="17.0"/>
+                </font>
+                <VBox.margin>
+                    <Insets left="5.0"/>
+                </VBox.margin>
+            </CheckBox>
+            <CheckBox fx:id="gameOverEndless" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0"
+                      mnemonicParsing="false" selected="true" text="%gameWindow.title.endless" textFill="WHITE">
+                <font>
+                    <Font size="17.0"/>
+                </font>
+                <VBox.margin>
+                    <Insets left="5.0"/>
+                </VBox.margin>
+            </CheckBox>
+        </VBox>
+        <HBox alignment="CENTER">
+            <Text fill="WHITE" text="%launcherWindow.text.duration" textAlignment="RIGHT">
+                <font>
+                    <Font size="19.0"/>
+                </font>
+                <HBox.margin>
+                    <Insets/>
+                </HBox.margin>
+            </Text>
+            <TextField fx:id="durationIn" alignment="CENTER" prefColumnCount="1" prefHeight="25.0" prefWidth="50.0"
+                       promptText="10">
+                <font>
+                    <Font size="17.0"/>
+                </font>
+                <HBox.margin>
+                    <Insets left="5.0" right="5.0"/>
+                </HBox.margin>
+            </TextField>
+            <Text fill="WHITE" text="min">
+                <font>
+                    <Font size="19.0"/>
+                </font>
+                <HBox.margin>
+                    <Insets/>
+                </HBox.margin>
+            </Text>
+        </HBox>
+        <CheckBox fx:id="showLogOnStartup" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0"
+                  mnemonicParsing="false" selected="true" text="%settings.window.checkBox.showLog" textFill="WHITE">
+            <font>
+                <Font size="17.0"/>
+            </font>
+        </CheckBox>
+        <HBox alignment="CENTER" spacing="20.0">
+            <MenuButton alignment="CENTER" focusTraversable="false" mnemonicParsing="false" prefHeight="30.0"
+                        prefWidth="175.0" text="%launcherWindow.text.languageSelection">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#setLanguageGerman" text="Deutsch"/>
+                    <MenuItem mnemonicParsing="false" onAction="#setLanguageEnglish" text="English"/>
+                    <MenuItem mnemonicParsing="false" onAction="#setLanguageNone"
+                              text="%settingsWindow.menuButton.unset"/>
+                </items>
+                <font>
+                    <Font size="14.0"/>
+                </font>
+            </MenuButton>
+            <Text fx:id="selectedLanguage" fill="WHITE" textAlignment="CENTER" wrappingWidth="158.7294921875">
+                <font>
+                    <Font size="25.0"/>
+                </font>
+            </Text>
+        </HBox>
+    </VBox>
 </AnchorPane>

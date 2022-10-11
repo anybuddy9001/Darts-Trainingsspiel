@@ -17,6 +17,8 @@ public class Game {
     private static final ResourceBundle resourceBundle = LauncherController.getResourceBundle();  //NON-NLS;
 
     private final GameController mainController;
+    private final Type gameType;
+    private final boolean gameOverOnZero;
     private Timeline timeline;
     private int second = LauncherController.getGameDuration();
     @Setter
@@ -31,6 +33,8 @@ public class Game {
 
     public Game(GameController mainController) {
         this.mainController = mainController;
+        this.gameType = LauncherController.getGameType();
+        this.gameOverOnZero = (gameType == Type.CHALLENGE ? JSONInterface.getGameOverChallenge() : JSONInterface.getGameOverEndless());
         mainController.updateTimer(String.format("%02d:%02d", second / 60, second % 60)); //NON-NLS
         initializeTimer();
     }
@@ -117,7 +121,11 @@ public class Game {
      */
     private void updateScore() {
         if (score < 0) {
-            this.gameOver();
+            score = 0;
+            LogController.println(resourceBundle.getString("kw.score") + ": " + score);
+            if (gameOverOnZero) {
+                this.gameOver();
+            }
         } else {
             if (highscore < score) {
                 highscore = score;
@@ -129,7 +137,7 @@ public class Game {
     }
 
     private void initializeTimer() {
-        switch (LauncherController.getGameType()) {
+        switch (gameType) {
             case ENDLESS -> timeline = new Timeline(new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
                 second++;
                 if (second % 3600 == 0) {

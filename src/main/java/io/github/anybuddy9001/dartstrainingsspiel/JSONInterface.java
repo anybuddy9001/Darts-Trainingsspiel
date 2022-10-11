@@ -1,5 +1,6 @@
 package io.github.anybuddy9001.dartstrainingsspiel;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.FileWriter;
@@ -11,13 +12,16 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class JSONInterface {
-    private final static Path settingsPath = Paths.get("settings.json");
+    private static final ResourceBundle resourceBundle = ResourceBundle.getBundle("lang");
+    private static final Path settingsPath = Paths.get("settings.json");
     private static JSONObject settings;
 
     private static void createNewSettings() {
         settings = new JSONObject();
-        settings.put("Version", ResourceBundle.getBundle("lang").getString("version")); //NON-NLS
+        settings.put("Version", resourceBundle.getString("version")); //NON-NLS
         settings.put("OpenLog", true);
+        settings.put("GameOverOnEndless", true);
+        settings.put("GameOverOnChallenge", false);
         settings.put("CustomLanguage", JSONObject.NULL);
         settings.put("DefaultGameDuration", 10);
 
@@ -42,9 +46,47 @@ public class JSONInterface {
         try {
             String json = Files.readString(settingsPath);
             settings = new JSONObject(json);
+            checkIntegrity();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (JSONException e) {
+            System.out.println(resourceBundle.getString("mError.JSONInterface.corruptSettingsFile")); //NON-NLS
+            handleCorruption();
+        }
+    }
+
+
+    private static void checkIntegrity() throws JSONException {
+        if (!settings.getString("Version").equals(ResourceBundle.getBundle("lang").getString("version"))) { //NON-NLS
+            migrateOldSettings();
+            return;
+        }
+        if (!(settings.has("OpenLog")
+                && settings.has("GameOverOnEndless")
+                && settings.has("GameOverOnChallenge")
+                && settings.has("CustomLanguage")
+                && settings.has("DefaultGameDuration"))) {
+            throw new JSONException("Missing Key");
+        }
+    }
+
+    /**
+     * Parses old settings to apply them to a new version
+     */
+    private static void migrateOldSettings() {
+        handleCorruption(); //ToDo write method body
+    }
+
+    /**
+     * Creates a backup of the corrupted file in "corruptSettings.json" and a new settings file
+     */
+    private static void handleCorruption() {
+        try (FileWriter fileWriter = new FileWriter("corruptSettings.json")) {
+            fileWriter.write(Files.readString(settingsPath));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        createNewSettings();
     }
 
     public static Locale getCustomLanguage() {
@@ -74,5 +116,21 @@ public class JSONInterface {
 
     public static void setDefaultGameDuration(int duration) {
         settings.put("DefaultGameDuration", duration);
+    }
+
+    public static boolean getGameOverEndless() {
+        return settings.getBoolean("GameOverOnEndless");
+    }
+
+    public static void setGameOverEndless(boolean bool) {
+        settings.put("GameOverOnEndless", bool);
+    }
+
+    public static boolean getGameOverChallenge() {
+        return settings.getBoolean("GameOverOnChallenge");
+    }
+
+    public static void setGameOverChallenge(boolean bool) {
+        settings.put("GameOverOnChallenge", bool);
     }
 }
