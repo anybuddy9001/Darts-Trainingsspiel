@@ -34,7 +34,7 @@ public class SettingsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         resourceBundle = resources;
         activeLocale = resources.getLocale();
-        selectedLanguage.setText(Objects.equals(activeLocale, new Locale("de")) ? "Deutsch" : "English"); //NON-NLS
+        selectedLanguage.setText(Objects.equals(activeLocale, new Locale.Builder().setLanguage("de").build()) ? "Deutsch" : "English"); //NON-NLS
         durationIn.setPromptText(String.valueOf(JSONInterface.getDefaultGameDuration()));
         gameOverEndless.setSelected(JSONInterface.getGameOverEndless());
         gameOverChallenge.setSelected(JSONInterface.getGameOverChallenge());
@@ -44,14 +44,14 @@ public class SettingsController implements Initializable {
     @FXML
     private void setLanguageGerman() {
         selectedLanguage.setText("Deutsch"); //NON-NLS
-        activeLocale = new Locale("de"); //NON-NLS
+        activeLocale = new Locale.Builder().setLanguage("de").build(); //NON-NLS
         checkIfSetAlready(activeLocale);
     }
 
     @FXML
     private void setLanguageEnglish() {
         selectedLanguage.setText("English"); //NON-NLS
-        activeLocale = new Locale("en"); //NON-NLS
+        activeLocale = new Locale.Builder().setLanguage("en").build(); //NON-NLS
         checkIfSetAlready(activeLocale);
     }
 

@@ -95,7 +95,7 @@ public class JSONInterface {
         if (obj.getClass().isInstance(JSONObject.NULL)) {
             return null;
         }
-        return new Locale(obj.toString());
+        return new Locale.Builder().setLanguage(obj.toString()).build();
     }
 
     public static void setCustomLanguage(Locale locale) {

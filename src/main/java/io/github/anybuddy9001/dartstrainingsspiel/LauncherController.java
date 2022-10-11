@@ -149,13 +149,13 @@ public class LauncherController implements Initializable {
 
     @FXML
     private void setLanguageGerman() {
-        Locale locale = new Locale("de"); //NON-NLS
+        Locale locale = new Locale.Builder().setLanguage("de").build(); //NON-NLS
         this.setLocale(locale);
     }
 
     @FXML
     private void setLanguageEnglish() {
-        Locale locale = new Locale("en"); //NON-NLS
+        Locale locale = new Locale.Builder().setLanguage("en").build(); //NON-NLS
         this.setLocale(locale);
     }
 
