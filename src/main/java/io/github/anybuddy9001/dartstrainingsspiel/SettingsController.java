@@ -85,7 +85,7 @@ public class SettingsController implements Initializable {
                 LauncherController.getLauncherController().setDurationInPromptToDefault();
             } catch (NumberFormatException e) {
                 LogController.showLog(Main.getPrimaryStage());
-                LogController.println("E: " + resourceBundle.getString("sError.duration")); //NON-NLS
+                LogController.println(resourceBundle.getString("sError.duration")); //NON-NLS
             }
         }
         // Save Locale and reset Launcher window

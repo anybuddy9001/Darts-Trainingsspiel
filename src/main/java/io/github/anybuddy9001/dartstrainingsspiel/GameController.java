@@ -159,7 +159,7 @@ public class GameController implements Initializable {
 
     @FXML
     public void newGame() {
-        LogController.println(resourceBundle.getString("stdOut.reset"));
+        LogController.println(resourceBundle.getString("stdOut.reset")); //NON-NLS
         game.stopTimer(); // Stop currents game timer to avoid clashing
         game = new Game(this);
         timerIsRunning = false;

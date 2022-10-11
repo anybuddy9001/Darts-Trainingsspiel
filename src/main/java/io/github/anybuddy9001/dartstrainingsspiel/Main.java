@@ -48,6 +48,6 @@ public class Main extends Application {
 
     @Override
     public void stop() {
-        LogController.println(resourceBundle.getString("stdOut.exit"));
+        LogController.println(resourceBundle.getString("stdOut.exit")); //NON-NLS
     }
 }

@@ -120,7 +120,7 @@ public class LauncherController implements Initializable {
             return true;
         } catch (NumberFormatException e) {
             LogController.showLog((Stage) activeLanguage.getScene().getWindow());
-            LogController.println("E: " + resourceBundle.getString("sError.duration")); //NON-NLS
+            LogController.println(resourceBundle.getString("sError.duration")); //NON-NLS
             return false;
         }
     }
