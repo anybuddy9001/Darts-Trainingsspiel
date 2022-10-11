@@ -149,6 +149,7 @@ public class Game {
                 if (second-- > 0) {
                     mainController.updateTimer(String.format("%02d:%02d", (second % 3600) / 60, second % 60)); //NON-NLS
                 } else {
+                    LogController.println(resourceBundle.getString("stdOut.timesUp")); //NON-NLS
                     gameOver();
                 }
             }));
