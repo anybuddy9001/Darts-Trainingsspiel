@@ -101,7 +101,7 @@ public class SettingsController implements Initializable {
     private void resetToDefault() {
         // Save window so it can be closed later
         Stage window = (Stage) durationIn.getScene().getWindow();
-        JSONInterface.reset();
+        JSONInterface.resetToDefaultSettings();
         LauncherController.getLauncherController().setLocale(Locale.getDefault());
         closeWindow(window);
     }

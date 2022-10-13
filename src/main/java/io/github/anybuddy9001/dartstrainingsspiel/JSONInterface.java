@@ -51,7 +51,7 @@ public class JSONInterface {
             throw new RuntimeException(e);
         } catch (JSONException e) {
             System.out.println(resourceBundle.getString("mError.JSONInterface.corruptSettingsFile")); //NON-NLS
-            handleCorruption();
+            backupAndRecreate();
         }
     }
 
@@ -74,14 +74,14 @@ public class JSONInterface {
      * Parses old settings to apply them to a new version
      */
     private static void migrateOldSettings() {
-        handleCorruption(); //ToDo write method body
+        backupAndRecreate(); //ToDo write method body
     }
 
     /**
-     * Creates a backup of the corrupted file in "corruptSettings.json" and a new settings file
+     * Creates a backup of the current file in "oldSettings.json" and a new settings file
      */
-    private static void handleCorruption() {
-        try (FileWriter fileWriter = new FileWriter("corruptSettings.json")) {
+    private static void backupAndRecreate() {
+        try (FileWriter fileWriter = new FileWriter("oldSettings.json")) {
             fileWriter.write(Files.readString(settingsPath));
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -134,7 +134,7 @@ public class JSONInterface {
         settings.put("GameOverOnChallenge", bool);
     }
 
-    public static void reset() {
-        createNewSettings();
+    public static void resetToDefaultSettings() {
+        backupAndRecreate();
     }
 }
