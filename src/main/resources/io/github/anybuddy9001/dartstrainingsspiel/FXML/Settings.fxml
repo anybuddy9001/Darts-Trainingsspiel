@@ -15,7 +15,7 @@
                     text="%cmn.button.close" textAlignment="CENTER"/>
         </buttons>
     </ButtonBar>
-    <VBox alignment="CENTER" fillWidth="false" prefHeight="261.0" prefWidth="400.0" spacing="15.0">
+    <VBox alignment="CENTER" fillWidth="false" prefHeight="260.0" prefWidth="400.0" spacing="15.0">
         <VBox alignment="CENTER_LEFT" spacing="5.0">
             <Text fill="WHITE" text="%settingsWindow.text.gameOverOnZero" underline="true">
                 <font>
@@ -94,4 +94,6 @@
             </Text>
         </HBox>
     </VBox>
+    <Button alignment="CENTER" cancelButton="true" layoutX="14.0" layoutY="264.0" mnemonicParsing="false"
+            onAction="#resetToDefault" text="%settingsWindow.button.resetToDefault" textAlignment="CENTER"/>
 </AnchorPane>

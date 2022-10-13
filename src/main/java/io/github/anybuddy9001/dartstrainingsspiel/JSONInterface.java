@@ -133,4 +133,8 @@ public class JSONInterface {
     public static void setGameOverChallenge(boolean bool) {
         settings.put("GameOverOnChallenge", bool);
     }
+
+    public static void reset() {
+        createNewSettings();
+    }
 }

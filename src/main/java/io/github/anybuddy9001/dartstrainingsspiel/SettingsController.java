@@ -70,7 +70,7 @@ public class SettingsController implements Initializable {
 
     @FXML
     private void save() {
-        // Save window so it can be closed for sure
+        // Save window so it can be closed later
         Stage window = (Stage) durationIn.getScene().getWindow();
         // Save check-box state
         JSONInterface.setGameOverChallenge(gameOverChallenge.isSelected());
@@ -94,6 +94,15 @@ public class SettingsController implements Initializable {
             LauncherController.getLauncherController().setLocale(activeLocale);
         }
         JSONInterface.saveSettings();
+        closeWindow(window);
+    }
+
+    @FXML
+    private void resetToDefault() {
+        // Save window so it can be closed later
+        Stage window = (Stage) durationIn.getScene().getWindow();
+        JSONInterface.reset();
+        LauncherController.getLauncherController().setLocale(Locale.getDefault());
         closeWindow(window);
     }
 
