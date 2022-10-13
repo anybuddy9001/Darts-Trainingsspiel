@@ -10,7 +10,7 @@
             snapToPixel="false" styleClass="big-anchor" stylesheets="@application.css"
             xmlns="http://javafx.com/javafx/19"
             fx:controller="io.github.anybuddy9001.dartstrainingsspiel.LauncherController">
-    <Text fill="WHITE" layoutX="37.0" layoutY="68.0" text="%launcherWindow.text.title" textAlignment="CENTER"
+    <Text fill="WHITE" layoutX="37.0" layoutY="68.0" text="%projectName" textAlignment="CENTER"
           underline="true" wrappingWidth="527.40380859375">
         <font>
             <Font size="50.0"/>
@@ -19,7 +19,7 @@
     <Button layoutX="295.0" layoutY="154.0" mnemonicParsing="false" onAction="#startChallengeMode" prefHeight="43.0"
             prefWidth="283.0" text="%gameWindow.title.challenge"/>
     <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="303.0" layoutY="204.0">
-        <Text fill="WHITE" text="%launcherWindow.text.duration" textAlignment="RIGHT">
+        <Text fill="WHITE" text="%cmn.text.duration" textAlignment="RIGHT">
             <font>
                 <Font size="17.0"/>
             </font>
@@ -53,7 +53,7 @@
         </font>
     </Text>
     <MenuButton layoutX="14.0" layoutY="318.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="170.0"
-                text="%launcherWindow.text.languageSelection">
+                text="%cmn.text.languageSelection">
         <items>
             <MenuItem mnemonicParsing="false" onAction="#setLanguageGerman" text="Deutsch"/>
             <MenuItem mnemonicParsing="false" onAction="#setLanguageEnglish" text="English"/>

@@ -110,7 +110,7 @@ public class GameController implements Initializable {
             numberPromptErrOut.clear();
             game.setNumCache(-1);
         } else {
-            numberPromptErrOut.setText(resourceBundle.getString("sError.numberPrompt.amount"));
+            numberPromptErrOut.setText(resourceBundle.getString("numberPromptWindow.amountErrorMsg"));
         }
     }
 

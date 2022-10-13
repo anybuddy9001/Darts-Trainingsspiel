@@ -19,7 +19,7 @@
         <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <buttons>
                 <Button mnemonicParsing="false" onAction="#clearLogScreen" text="%logWindow.button.clear"/>
-                <Button mnemonicParsing="false" onAction="#hideLog" text="%logWindow.button.close"/>
+                <Button mnemonicParsing="false" onAction="#hideLog" text="%cmn.button.close"/>
             </buttons>
             <padding>
                 <Insets bottom="5.0" left="15.0" right="15.0"/>
