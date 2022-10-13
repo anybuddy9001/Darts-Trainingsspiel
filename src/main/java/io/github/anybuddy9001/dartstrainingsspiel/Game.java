@@ -20,7 +20,7 @@ public class Game {
     private final Type gameType;
     private final boolean gameOverOnZero;
     private Timeline timeline;
-    private int second = LauncherController.getGameDuration();
+    private int second = 0;
     @Setter
     @Getter
     private int highscore = 0;
@@ -35,6 +35,9 @@ public class Game {
         this.mainController = mainController;
         this.gameType = LauncherController.getGameType();
         this.gameOverOnZero = (gameType == Type.CHALLENGE ? JSONInterface.getGameOverChallenge() : JSONInterface.getGameOverEndless());
+        if (gameType == Type.CHALLENGE) {
+            second = LauncherController.getGameDuration();
+        }
         mainController.updateTimer(String.format("%02d:%02d", second / 60, second % 60)); //NON-NLS
         initializeTimer();
     }
