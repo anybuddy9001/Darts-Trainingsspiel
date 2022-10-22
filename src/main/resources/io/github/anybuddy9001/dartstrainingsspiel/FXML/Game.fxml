@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" onKeyPressed="#keyPressed" prefHeight="365.0" prefWidth="619.0"
-            styleClass="big-anchor" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19"
+            styleClass="big-anchor" stylesheets="@application.css" xmlns="http://javafx.com/javafx/18"
             fx:controller="io.github.anybuddy9001.dartstrainingsspiel.GameController">
     <center>
         <GridPane BorderPane.alignment="CENTER">

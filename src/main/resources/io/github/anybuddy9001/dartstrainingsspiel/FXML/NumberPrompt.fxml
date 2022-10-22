@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="272.0" prefWidth="372.0" snapToPixel="false"
-            styleClass="small-anchor" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19"
+            styleClass="small-anchor" stylesheets="@application.css" xmlns="http://javafx.com/javafx/18"
             fx:controller="io.github.anybuddy9001.dartstrainingsspiel.GameController">
     <Button fx:id="numberPromptCloseButton" focusTraversable="false" layoutX="293.0" layoutY="205.0"
             mnemonicParsing="false"
