@@ -5,7 +5,7 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/19"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/18"
             fx:controller="io.github.anybuddy9001.dartstrainingsspiel.LogController">
     <center>
         <TextArea fx:id="logOut" editable="false" focusTraversable="false" prefHeight="200.0" prefWidth="200.0"
