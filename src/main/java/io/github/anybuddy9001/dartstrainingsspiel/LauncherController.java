@@ -59,7 +59,7 @@ public class LauncherController implements Initializable {
      * Sets the TextField prompt of durationIn to the default from settings file
      */
     public void setDurationInPromptToDefault() {
-        durationIn.setPromptText(String.valueOf(JSONInterface.getDefaultGameDuration()));
+        durationIn.setPromptText(String.valueOf(SettingsInterface.getDefaultGameDuration()));
     }
 
     private void createNewSettingsWindow() {
@@ -112,7 +112,7 @@ public class LauncherController implements Initializable {
     private boolean setGameDuration() {
         try {
             if (durationIn.getText().isBlank()) {
-                gameDuration = JSONInterface.getDefaultGameDuration() * 60;
+                gameDuration = SettingsInterface.getDefaultGameDuration() * 60;
             } else {
                 gameDuration = Integer.parseInt(durationIn.getText()) * 60;
                 if (gameDuration < 1 || gameDuration > 3600) throw new NumberFormatException();
@@ -138,7 +138,7 @@ public class LauncherController implements Initializable {
             window.setTitle(resourceBundle.getString("projectName") + " - " + resourceBundle.getString("gameWindow.title." + gameType.toString().toLowerCase()));
             window.setScene(scene);
             window.setResizable(false);
-            if (JSONInterface.getDoOpenLog()) {
+            if (SettingsInterface.getDoOpenLog()) {
                 LogController.showLog(window);
             }
         } catch (IOException e) {

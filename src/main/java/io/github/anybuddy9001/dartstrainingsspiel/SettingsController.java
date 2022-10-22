@@ -35,10 +35,10 @@ public class SettingsController implements Initializable {
         resourceBundle = resources;
         activeLocale = resources.getLocale();
         selectedLanguage.setText(Objects.equals(activeLocale, new Locale.Builder().setLanguage("de").build()) ? "Deutsch" : "English"); //NON-NLS
-        durationIn.setPromptText(String.valueOf(JSONInterface.getDefaultGameDuration()));
-        gameOverEndless.setSelected(JSONInterface.getGameOverEndless());
-        gameOverChallenge.setSelected(JSONInterface.getGameOverChallenge());
-        showLogOnStartup.setSelected(JSONInterface.getDoOpenLog());
+        durationIn.setPromptText(String.valueOf(SettingsInterface.getDefaultGameDuration()));
+        gameOverEndless.setSelected(SettingsInterface.getGameOverEndless());
+        gameOverChallenge.setSelected(SettingsInterface.getGameOverChallenge());
+        showLogOnStartup.setSelected(SettingsInterface.getDoOpenLog());
     }
 
     @FXML
@@ -63,7 +63,7 @@ public class SettingsController implements Initializable {
     }
 
     private void checkIfSetAlready(Locale locale) {
-        if (!(locale == JSONInterface.getCustomLanguage())) {
+        if (!(locale == SettingsInterface.getCustomLanguage())) {
             saveLocale = true;
         }
     }
@@ -73,15 +73,15 @@ public class SettingsController implements Initializable {
         // Save window so it can be closed later
         Stage window = (Stage) durationIn.getScene().getWindow();
         // Save check-box state
-        JSONInterface.setGameOverChallenge(gameOverChallenge.isSelected());
-        JSONInterface.setGameOverEndless(gameOverEndless.isSelected());
-        JSONInterface.setDoOpenLog(showLogOnStartup.isSelected());
+        SettingsInterface.setGameOverChallenge(gameOverChallenge.isSelected());
+        SettingsInterface.setGameOverEndless(gameOverEndless.isSelected());
+        SettingsInterface.setDoOpenLog(showLogOnStartup.isSelected());
         // Check, save duration and update duration prompt
         if (!durationIn.getText().isBlank()) {
             try {
                 int duration = Integer.parseInt(durationIn.getText());
                 if (duration < 1 || duration > 60) throw new NumberFormatException();
-                JSONInterface.setDefaultGameDuration(duration);
+                SettingsInterface.setDefaultGameDuration(duration);
                 LauncherController.getLauncherController().setDurationInPromptToDefault();
             } catch (NumberFormatException e) {
                 LogController.showLog(Main.getPrimaryStage());
@@ -90,10 +90,10 @@ public class SettingsController implements Initializable {
         }
         // Save Locale and reset Launcher window
         if (saveLocale) {
-            JSONInterface.setCustomLanguage(activeLocale);
+            SettingsInterface.setCustomLanguage(activeLocale);
             LauncherController.getLauncherController().setLocale(activeLocale);
         }
-        JSONInterface.saveSettings();
+        SettingsInterface.saveSettings();
         closeWindow(window);
     }
 
@@ -101,7 +101,7 @@ public class SettingsController implements Initializable {
     private void resetToDefault() {
         // Save window so it can be closed later
         Stage window = (Stage) durationIn.getScene().getWindow();
-        JSONInterface.resetToDefaultSettings();
+        SettingsInterface.resetToDefaultSettings();
         LauncherController.getLauncherController().setLocale(Locale.getDefault());
         closeWindow(window);
     }

@@ -34,7 +34,7 @@ public class Game {
     public Game(GameController mainController) {
         this.mainController = mainController;
         this.gameType = LauncherController.getGameType();
-        this.gameOverOnZero = (gameType == Type.CHALLENGE ? JSONInterface.getGameOverChallenge() : JSONInterface.getGameOverEndless());
+        this.gameOverOnZero = (gameType == Type.CHALLENGE ? SettingsInterface.getGameOverChallenge() : SettingsInterface.getGameOverEndless());
         if (gameType == Type.CHALLENGE) {
             second = LauncherController.getGameDuration();
         }

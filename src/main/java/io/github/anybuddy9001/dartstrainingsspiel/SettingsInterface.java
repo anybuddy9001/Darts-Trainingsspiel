@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class JSONInterface {
+public class SettingsInterface {
     private static final ResourceBundle resourceBundle = ResourceBundle.getBundle("lang");
     private static final Path settingsPath = Paths.get("settings.json");
     private static JSONObject settings;

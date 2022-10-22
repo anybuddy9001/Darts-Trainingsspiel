@@ -22,7 +22,7 @@ public class Main extends Application {
     private static Stage primaryStage;
 
     public static void main(String[] args) {
-        Locale locale = JSONInterface.getCustomLanguage();
+        Locale locale = SettingsInterface.getCustomLanguage();
         if (locale == null) {
             resourceBundle = ResourceBundle.getBundle("lang");  //NON-NLS
         } else {
